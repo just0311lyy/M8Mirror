@@ -1,0 +1,122 @@
+//
+//  PrefixHeader.pch
+//  M8Mirror
+//
+//  Created by 李阳洋 on 2018/3/6.
+//  Copyright © 2018年 lyy. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+#import <Masonry.h>
+#import <MBProgressHUD.h>
+#import <AFNetworking.h>
+#import "UIImage+category.h"
+#import "LYLocalizeConfig.h"
+#import "M8GlobalData.h"
+#import "LYUserDefault.h"
+#import "LYHTTPSManager.h"
+#import "LYSQLDataOperation.h"
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+//屏幕宽和高
+#define SCREEN_W ([[UIScreen mainScreen] bounds].size.width)
+#define SCREEN_H ([[UIScreen mainScreen] bounds].size.height)
+////字体大小或尺寸适配
+//#define FIT(sizeValue) (sizeValue*(1024*SCREEN_W))/(768*SCREEN_H)
+////宽度尺寸
+//#define FIT_W(weightValue) 768/1024*weightValue
+//标示色
+#define UIColorFromRGB(rgbValue) [UIColor \
+colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0x00FF00) >> 8))/255.0 \
+blue:((float)(rgbValue & 0x0000FF))/255.0 \
+alpha:1.0]
+//logo色 绿
+#define LOGO_COLOR UIColorFromRGB(0x41a5cd)
+//灰色
+#define GREY_COLOR UIColorFromRGB(0xEDEDED)
+//灰色字体
+#define GREY_TXT_COLOR UIColorFromRGB(0x8c8f90)
+//table分界线
+#define GREY_LINE_COLOR UIColorFromRGB(0xedf0f3)
+
+
+//宽
+#define FIT_W(x) x/1024*[DeviceSingle sharedInstance].sWidth
+//高
+#define FIT_H(y) y/768*[DeviceSingle sharedInstance].sHeight
+
+//注册到机构
+#define URL_REGISTER_AGENCY @"http://www.milisun.com/WebService/SkinService.asmx/AdminUserInviteRegister"
+//下载广告图
+#define URL_IMAGES_DOWNLOAD @"http://www.milisun.com/WebService/SkinService.asmx/GetAdvertByUsername"
+//通过属性下载产品列表
+#define URL_PRODUCTS_ATTRIB_DOWNLOAD @"http://www.milisun.com/WebService/SkinService.asmx/GetProductByUsername"
+
+
+#define TAG_HOME 1000
+#define TAG_LIST 1001
+#define TAG_INFO 1002
+#define TAG_PRODUCT 1003
+#define TAG_MINE 1004
+//MOCameraViewController  CameraTypeButtonView
+#define TAG_RGBG 1005
+#define TAG_UVG 1006
+#define TAG_PZG 1007
+//MOCameraViewController  PhotoView
+#define TAG_LEFT 1008
+#define TAG_RIGHT 1009
+//MOPhotoShowViewController BottomPhotoShowView
+#define TAG_BOTTOM_LEFT 1010
+#define TAG_BOTTOM_MIDDLE 1011
+#define TAG_BOTTOM_RIGHT 1012
+//MOCompareViewController BottomPhotoCompareView
+#define TAG_BOTTOM_ONE 1013
+#define TAG_BOTTOM_TWO 1014
+#define TAG_BOTTOM_THREE 1015
+#define TAG_BOTTOM_FOUR 1016
+#define TAG_BOTTOM_FIVE 1017
+#define TAG_BOTTOM_SIX 1018
+#define TAG_BOTTOM_SEVEN 1019
+#define TAG_BOTTOM_EIGHT 1020
+#define TAG_BOTTOM_NINE 1021
+//BottomThreeBtnView
+#define TAG_COMPARE_LEFT 1025
+#define TAG_COMPARE_CENTER 1026
+#define TAG_COMPARE_RIGHT 1027
+//M8ReportViewController ReportProductsView
+#define TAG_REPORT_PROBLEM 1030
+
+
+
+//.h文件
+#define singleH(name) +(instancetype)share##name;
+//.m文件
+#define singleM(name) static id _instance;\
++(instancetype)allocWithZone:(struct _NSZone *)zone\
+{\
+    static dispatch_once_t onceToken;\
+    dispatch_once(&onceToken, ^{\
+        _instance = [super allocWithZone:zone];\
+    });\
+    return _instance;\
+}\
+\
++(instancetype)share##name\
+{\
+    return [[self alloc]init];\
+}\
+-(id)copyWithZone:(NSZone *)zone\
+{\
+    return _instance;\
+}\
+\
+-(id)mutableCopyWithZone:(NSZone *)zone\
+{\
+    return _instance;\
+}
+
+
+
+#endif /* PrefixHeader_pch */

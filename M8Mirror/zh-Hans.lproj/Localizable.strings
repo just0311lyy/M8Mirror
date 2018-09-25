@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  M8Mirror
+
+  Created by 李阳洋 on 2018/3/19.
+  Copyright © 2018年 lyy. All rights reserved.
+*/
+
+//欢迎页
+"Next Step"="下一步";
+
+//登录页
+"Account"="账号";
+"Password"="密码";
+"Login"="登  录";
+
+
+//主页
