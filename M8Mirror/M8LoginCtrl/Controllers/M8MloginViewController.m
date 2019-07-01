@@ -19,12 +19,15 @@
 
 #define Line_Gray_Color UIColorFromRGB(0xe5e8eb)
 @interface M8MloginViewController ()<UITextFieldDelegate>
-@property (strong, nonatomic)UITextField *accountText;
-@property (strong, nonatomic)UITextField *passwordText;
-@property (strong, nonatomic)UIView *backgroundView; //内容视图，键盘弹起时上移，键盘回落时回移
+@property (strong, nonatomic) UITextField *accountText;
+@property (strong, nonatomic) UITextField *passwordText;
+@property (strong, nonatomic) UIView *backgroundView; //内容视图，键盘弹起时上移，键盘回落时回移
 //@property (strong, nonatomic)UIView *inputView; //内容视图，键盘弹起时上移，键盘回落时回移
-@property (strong, nonatomic)FSCustomButton *languageBtn;
-@property (assign, nonatomic)NSInteger selectIndex;/*选择的语言cell索引*/
+//@property (strong, nonatomic) FSCustomButton *languageBtn;
+@property (strong, nonatomic) UILabel *languageLb;
+@property (strong, nonatomic) UIImageView *countryImgView;
+@property (assign, nonatomic) NSInteger selectIndex;/*选择的语言cell索引*/
+
 
 @end
 
@@ -57,10 +60,11 @@
 - (void)initView{
     [super initView];
     self.view.backgroundColor = BACKGROUND_GREY_COLOR;
-
+    
+    //包含输入框的背景视图
+    CGFloat backBg_H = SCREEN_W*774/1080 + GetLogicPixelX(10) + 2*(GetLogicPixelX(60) + GetLogicPixelX(2) + GetLogicPixelX(30)) + GetLogicPixelX(60) + GetLogicPixelX(20) + GetLogicPixelX(40);
     _backgroundView = [[UIView alloc] init];
     [self.view addSubview:_backgroundView];
-    CGFloat backBg_H = SCREEN_H * 4 / 5;
     [_backgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view);
         make.left.equalTo(self.view);
@@ -68,7 +72,8 @@
         make.height.equalTo(@(backBg_H));
     }];
     
-    CGFloat blueBg_H = backBg_H/2;
+    //1080x774
+    CGFloat blueBg_H = SCREEN_W*774/1080;
     UIImageView *bgImageView = [[UIImageView alloc] init];
     bgImageView.image = [UIImage imageNamed:@"login_background.png"];
     [_backgroundView addSubview:bgImageView];
@@ -87,29 +92,33 @@
     [userImgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(bgImageView);
         make.centerY.equalTo(bgImageView);
-        make.width.equalTo(@(GetLogicPixelX(240)));
-        make.height.equalTo(@(GetLogicPixelX(240)));
+        make.width.equalTo(@(GetLogicPixelX(240)*2/3));
+        make.height.equalTo(@(GetLogicPixelX(240)*2/3));
     }];
-    userImgView.layer.cornerRadius = GetLogicPixelX(240)/2;
+    userImgView.layer.cornerRadius = GetLogicPixelX(240)*2/3/2;
     userImgView.layer.borderWidth = 10;
     userImgView.layer.borderColor = UIColorFromRGB(0x4ab5d6).CGColor;
     [userImgView.layer setMasksToBounds:YES];
     //账号
-    CGFloat img_H = GetLogicPixelX(50);
     _accountText = [[UITextField alloc] init];
     [_accountText setDelegate:self];
     [_accountText setPlaceholder:[LYLocalizeConfig localizedString:@"Account"]];
+    [_accountText setValue:[UIFont boldSystemFontOfSize:GetLogicFont(8)] forKeyPath:@"_placeholderLabel.font"];
+    [_accountText setFont:[UIFont boldSystemFontOfSize:GetLogicFont(14)]];
     _accountText.clearButtonMode = UITextFieldViewModeWhileEditing; //一键删除
     _accountText.autocapitalizationType = UITextAutocapitalizationTypeNone; //不自动大写
     //    _accountText.textAlignment = UITextAlignmentLeft;
+//    _accountText.backgroundColor = [UIColor yellowColor];
     [_backgroundView addSubview:_accountText];
     [_accountText mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_backgroundView);
-        make.top.equalTo(bgImageView.mas_bottom).with.offset(GetLogicPixelX(60));
-        make.width.equalTo(@(SCREEN_W * 3/5));
-        make.height.equalTo(@(GetLogicPixelX(80)));
+        make.top.equalTo(bgImageView.mas_bottom).with.offset(GetLogicPixelX(10));
+        make.width.equalTo(@(GetLogicPixelX(400)));
+        make.height.equalTo(@(GetLogicPixelX(60)));
     }];
     
+    //55x60
+    CGFloat img_H = GetLogicPixelX(60)/2;
     UIImageView *accountImgView = [[UIImageView alloc] init];
     UIImage *accountImg = [[UIImage imageNamed:@"login_account.png"] imageWithTintColor:LOGO_COLOR];
     [accountImgView setImage:accountImg];
@@ -117,14 +126,14 @@
     [accountImgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_accountText);
         make.right.equalTo(_accountText.mas_left).with.offset(-GetLogicPixelX(20));
-        make.width.equalTo(@(img_H));
+        make.width.equalTo(@(img_H*55/60));
         make.height.equalTo(@(img_H));
     }];
     //账号分割线
-    UIView *lineOneView = [[UIView alloc] init];
-    lineOneView.backgroundColor = Line_Gray_Color;
-    [_backgroundView addSubview:lineOneView];
-    [lineOneView mas_makeConstraints:^(MASConstraintMaker *make) {
+    UIView *accountLineView = [[UIView alloc] init];
+    accountLineView.backgroundColor = Line_Gray_Color;
+    [_backgroundView addSubview:accountLineView];
+    [accountLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_accountText.mas_bottom);
         make.left.right.equalTo(_accountText);
         make.height.equalTo(@(GetLogicPixelX(2)));
@@ -135,23 +144,26 @@
     [_passwordText setDelegate:self];
     [_passwordText setPlaceholder:[LYLocalizeConfig localizedString:@"Password"]];
     _passwordText.secureTextEntry = YES;
+    [_passwordText setValue:[UIFont boldSystemFontOfSize:GetLogicFont(8)] forKeyPath:@"_placeholderLabel.font"];
+    [_passwordText setFont:[UIFont boldSystemFontOfSize:GetLogicFont(14)]];
     _passwordText.clearButtonMode = UITextFieldViewModeWhileEditing; //一键删除
     _passwordText.autocapitalizationType = UITextAutocapitalizationTypeNone; //不自动大写
     //    _accountText.textAlignment = UITextAlignmentLeft;
     [_backgroundView addSubview:_passwordText];
     [_passwordText mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_accountText.mas_bottom).with.offset(GetLogicPixelX(40));
+        make.top.equalTo(_accountText.mas_bottom).with.offset(GetLogicPixelX(30));
         make.centerX.width.height.equalTo(_accountText);
     }];
 
+    //51x62
     UIImageView *passwordImgView = [[UIImageView alloc] init];
     UIImage *passwordImg = [[UIImage imageNamed:@"login_password.png"] imageWithTintColor:LOGO_COLOR];
     [passwordImgView setImage:passwordImg];
     [_backgroundView addSubview:passwordImgView];
     [passwordImgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(_passwordText);
-        make.left.equalTo(accountImgView);
-        make.width.equalTo(@(img_H));
+        make.centerX.equalTo(accountImgView);
+        make.width.equalTo(@(img_H*51/62));
         make.height.equalTo(@(img_H));
     }];
 
@@ -165,64 +177,116 @@
         make.height.equalTo(@(GetLogicPixelX(2)));
     }];
     
-    //登录
-//    UIButton *loginBtn = [[UIButton alloc] initWithFrame:CGRectMake(width/2, CGRectGetHeight(_backgroundView.frame) - btn_h, width,btn_h)];
+    //登录按钮
     UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_backgroundView addSubview:loginBtn];
     [loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_passwordText.mas_bottom).with.offset(GetLogicPixelX(80));
+        make.top.equalTo(_passwordText.mas_bottom).with.offset(GetLogicPixelX(30));
         make.centerX.equalTo(_backgroundView);
-        make.width.equalTo(@(GetLogicPixelX(380)));
-        make.height.equalTo(@(GetLogicPixelX(88)));
+        make.width.equalTo(@(GetLogicPixelX(260)));
+        make.height.equalTo(@(GetLogicPixelX(60)));
     }];
     [loginBtn setTitle:[LYLocalizeConfig localizedString:@"Login"] forState:UIControlStateNormal];
     [loginBtn setBackgroundColor:LOGO_COLOR];
-    [loginBtn.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:GetLogicFont(18)]];
+    [loginBtn.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:GetLogicFont(16)]];
     [loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    loginBtn.layer.cornerRadius = GetLogicPixelX(88)/2;
+    loginBtn.layer.cornerRadius = GetLogicPixelX(60)/2;
     [loginBtn.layer setMasksToBounds:YES];
     [loginBtn addTarget:self action:@selector(loginButtonClick) forControlEvents:UIControlEventTouchUpInside];
 
-    [self languageSelectedView];  //语言选择视图
-}
-
--(void)languageSelectedView{
-    //默认为当前计算机选中的语言
-    _languageBtn = [FSCustomButton buttonWithType:UIButtonTypeCustom];
-//    _languageBtn.frame = CGRectMake((SCREEN_W - 200)/2, CGRectGetMaxY(_backgroundView.frame) + (SCREEN_H/5 - 50)/2, 200,50);
-    [self.view addSubview:_languageBtn];
-    [_languageBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_backgroundView.mas_bottom).with.offset(GetLogicPixelX(20));
-        make.centerX.equalTo(_backgroundView);
-        make.width.equalTo(@(GetLogicPixelX(400)));
-        make.height.equalTo(@(GetLogicPixelX(100)));
+    //语言切换
+    _languageLb = [[UILabel alloc] init];
+    [_backgroundView addSubview:_languageLb];
+    [_languageLb setTextAlignment:NSTextAlignmentCenter];
+    [_languageLb setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:GetLogicFont(12)]];
+    [_languageLb mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(loginBtn.mas_bottom).with.offset(GetLogicPixelX(20));
+        make.centerX.equalTo(loginBtn);
+        make.width.equalTo(@(GetLogicPixelX(120)));
+        make.height.equalTo(@(GetLogicPixelX(40)));
     }];
     
-    _languageBtn.buttonImagePosition = FSCustomButtonImagePositionLeft;
-    _languageBtn.adjustsTitleTintColorAutomatically = YES;
-    [_languageBtn.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:GetLogicFont(18)]];
-    [_languageBtn addTarget:self action:@selector(languagePopViewShow:) forControlEvents:UIControlEventTouchUpInside];
-    _languageBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0,GetLogicPixelX(10));
+    //80x52 语言国家图
+    _countryImgView = [[UIImageView alloc] init];
+    [_backgroundView addSubview:_countryImgView];
+    _countryImgView.backgroundColor = [UIColor yellowColor];
+    [_countryImgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(_languageLb);
+        make.right.equalTo(_languageLb.mas_left);
+        make.width.equalTo(@(img_H*80/52));
+        make.height.equalTo(@(img_H));
+    }];
     
     //获取当前设备语言
     NSArray *appLanguages = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
     NSString *systemName = [appLanguages objectAtIndex:0];
     NSLog(@"language:%@",systemName);
-    //40x26
-    UIImage *countryImage =[UIImage scaleImage:[UIImage imageNamed:@"country_China.png"]  toSize:CGSizeMake(GetLogicPixelX(50),GetLogicPixelX(32.5))];
+    UIImage *countryImage = [UIImage imageNamed:@"country_China.png"];
     NSString *countryString = @"简体中文";
     if ([systemName isEqualToString:@"zh-Hans-US"]) {  //简体中文
         _selectIndex = 0;
         countryString = @"简体中文";
-        countryImage =[UIImage scaleImage:[UIImage imageNamed:@"country_China.png"]  toSize:CGSizeMake(GetLogicPixelX(50),GetLogicPixelX(32.5))];
+        countryImage = [UIImage imageNamed:@"country_China.png"];
     }else if([systemName isEqualToString:@"en"]){  //英文
         _selectIndex = 1;
         countryString = @"English";
-        countryImage =[UIImage scaleImage:[UIImage imageNamed:@"country_English.png"]  toSize:CGSizeMake(GetLogicPixelX(50),GetLogicPixelX(32.5))];
+        countryImage = [UIImage imageNamed:@"country_English.png"];
     }
-    [_languageBtn setImage:countryImage forState:UIControlStateNormal];
-    [_languageBtn setTitle:countryString forState:UIControlStateNormal];
+    [_countryImgView setImage:countryImage];
+    _languageLb.text = countryString;
+
+    //
+    UIButton *languageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_backgroundView addSubview:languageBtn];
+//    languageBtn.backgroundColor = [UIColor blueColor];
+    [languageBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_languageLb.mas_top);
+        make.bottom.equalTo(_languageLb.mas_bottom);
+        make.left.equalTo(_countryImgView.mas_left);
+        make.right.equalTo(_languageLb.mas_right);
+    }];
+    [languageBtn addTarget:self action:@selector(languagePopViewShow:) forControlEvents:UIControlEventTouchUpInside];
+    
+//    [self languageSelectedView];  //语言选择视图
 }
+
+//-(void)languageSelectedView{
+//    //默认为当前计算机选中的语言
+//    _languageBtn = [FSCustomButton buttonWithType:UIButtonTypeCustom];
+////    _languageBtn.frame = CGRectMake((SCREEN_W - 200)/2, CGRectGetMaxY(_backgroundView.frame) + (SCREEN_H/5 - 50)/2, 200,50);
+//    [self.view addSubview:_languageBtn];
+//    [_languageBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(_backgroundView.mas_bottom).with.offset(GetLogicPixelX(20));
+//        make.centerX.equalTo(_backgroundView);
+//        make.width.equalTo(@(GetLogicPixelX(400)));
+//        make.height.equalTo(@(GetLogicPixelX(100)));
+//    }];
+//
+//    _languageBtn.buttonImagePosition = FSCustomButtonImagePositionLeft;
+//    _languageBtn.adjustsTitleTintColorAutomatically = YES;
+//    [_languageBtn.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:GetLogicFont(18)]];
+//    [_languageBtn addTarget:self action:@selector(languagePopViewShow:) forControlEvents:UIControlEventTouchUpInside];
+//    _languageBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0,GetLogicPixelX(10));
+//
+//    //获取当前设备语言
+//    NSArray *appLanguages = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
+//    NSString *systemName = [appLanguages objectAtIndex:0];
+//    NSLog(@"language:%@",systemName);
+//    //40x26
+//    UIImage *countryImage =[UIImage scaleImage:[UIImage imageNamed:@"country_China.png"]  toSize:CGSizeMake(GetLogicPixelX(50),GetLogicPixelX(32.5))];
+//    NSString *countryString = @"简体中文";
+//    if ([systemName isEqualToString:@"zh-Hans-US"]) {  //简体中文
+//        _selectIndex = 0;
+//        countryString = @"简体中文";
+//        countryImage =[UIImage scaleImage:[UIImage imageNamed:@"country_China.png"]  toSize:CGSizeMake(GetLogicPixelX(50),GetLogicPixelX(32.5))];
+//    }else if([systemName isEqualToString:@"en"]){  //英文
+//        _selectIndex = 1;
+//        countryString = @"English";
+//        countryImage =[UIImage scaleImage:[UIImage imageNamed:@"country_English.png"]  toSize:CGSizeMake(GetLogicPixelX(50),GetLogicPixelX(32.5))];
+//    }
+//    [_languageBtn setImage:countryImage forState:UIControlStateNormal];
+//    [_languageBtn setTitle:countryString forState:UIControlStateNormal];
+//}
 
 #pragma mark -- 键盘
 - (void)keyboardWillShow:(NSNotification *)note{
@@ -311,8 +375,11 @@
     languageView.languageSelectIndex = ^(NSInteger index) {
         weakSelf.selectIndex = index;
         CountryModel *model = languageArr[index];
-        [_languageBtn setTitle:model.countryName forState:UIControlStateNormal];
-        [_languageBtn setImage:[UIImage scaleImage:[UIImage imageNamed:model.imageName]  toSize:CGSizeMake(40, 26)] forState:UIControlStateNormal];
+        [_languageLb setText:model.countryName];
+        [_countryImgView setImage:[UIImage imageNamed:model.imageName]];
+
+//        [_languageBtn setTitle:model.countryName forState:UIControlStateNormal];
+//        [_languageBtn setImage:[UIImage scaleImage:[UIImage imageNamed:model.imageName]  toSize:CGSizeMake(40, 26)] forState:UIControlStateNormal];
     };
     [languageView show:self.view];
 }

@@ -57,19 +57,7 @@
 -(void)initWithScrollView{
     CGRect frame = CGRectMake(0,64, SCREEN_W, SCREEN_H/3);
     self.loopScrollView = [[YHLoopScrollView alloc] initWithLoopPageType:LoopPageType_Circle delegate:self frame:frame];
-    NSArray *imgUrls = @[@"http://img14.gomein.net.cn/image/prodimg/promimg/topics/201511/20151102/1733jjj640_x.jpg",
-                         
-                         @"http://img4.gomein.net.cn/image/prodimg/promimg/topics/201510/20151030/1733kaimen280_x.jpg",
-                         
-                         @"http://img10.gomein.net.cn/image/prodimg/promimg/topics/201510/20151030/1733bx280_x.jpg",
-                         
-                         @"http://img3.gomein.net.cn/image/prodimg/promimg/topics/201510/20151030/1733qu280_x.jpg",
-                         
-                         @"http://img10.gomein.net.cn/image/prodimg/promimg/topics/201511/20151102/1733dn280_x.jpg",
-                         
-                         @"http://img1.gomein.net.cn/image/prodimg/promimg/topics/201510/20151030/1733cd280_x.jpg",
-                         
-                         @"http://img13.gomein.net.cn/image/prodimg/promimg/topics/201510/20151030/1733bh280_x.jpg"];
+    NSArray *imgUrls = @[@"http://img14.gomein.net.cn/image/prodimg/promimg/topics/201511/20151102/1733jjj640_x.jpg",@"http://img4.gomein.net.cn/image/prodimg/promimg/topics/201510/20151030/1733kaimen280_x.jpg",@"http://img10.gomein.net.cn/image/prodimg/promimg/topics/201510/20151030/1733bx280_x.jpg",@"http://img3.gomein.net.cn/image/prodimg/promimg/topics/201510/20151030/1733qu280_x.jpg",@"http://img10.gomein.net.cn/image/prodimg/promimg/topics/201511/20151102/1733dn280_x.jpg",@"http://img1.gomein.net.cn/image/prodimg/promimg/topics/201510/20151030/1733cd280_x.jpg",@"http://img13.gomein.net.cn/image/prodimg/promimg/topics/201510/20151030/1733bh280_x.jpg"];
     
     self.loopScrollView.mArrayImageUrls = [imgUrls mutableCopy];
     [self.view addSubview:self.loopScrollView];
