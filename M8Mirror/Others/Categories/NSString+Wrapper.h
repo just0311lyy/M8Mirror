@@ -36,4 +36,41 @@
 +(BOOL)checkTelNumber:(NSString *) telNumber;
 //邮箱
 +(BOOL)validateEmail:(NSString *)email;
+
+- (CGSize)boundingRectWithSize:(CGSize)size fontOfLabel:(UIFont *)font;
+
+- (CGSize)boundingRectWithFont:(UIFont *)font;
+
++ (NSString *)timeFormatTextWithSecond:(NSInteger)second;
++ (NSString *)getSerializationStrWithArray:(NSArray *)array;
+
++ (NSString *)dayDateForTime:(NSString*)time;
+
++ (NSString *)monthDateForTime:(NSString*)time;
+
++ (NSString *)getCountWithDecimalPoint:(CGFloat)count;
+
+- (NSArray *)getArrayFromSerializationStr;
+
+/**
+ 校验手机号
+ */
+- (BOOL)isMobileNumber;
+
+/**
+ 校验数字和字母
+ */
+- (BOOL)isLetterNumber;
+
+/**
+ 提取电话号码
+ */
+- (NSString *)getPhoneNumber;
+
+/**
+ 电话号码加****
+ */
+-(NSString *)numberSuitScanf;
+
+- (BOOL)isNumberRail;
 @end

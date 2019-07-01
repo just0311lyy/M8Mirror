@@ -36,6 +36,8 @@ alpha:1.0]
 #define LOGO_COLOR UIColorFromRGB(0x41a5cd)
 //灰色
 #define GREY_COLOR UIColorFromRGB(0xEDEDED)
+//背景灰
+#define BACKGROUND_GREY_COLOR UIColorFromRGB(0xedf0f3)
 //灰色字体
 #define GREY_TXT_COLOR UIColorFromRGB(0x8c8f90)
 //table分界线
@@ -88,8 +90,66 @@ alpha:1.0]
 //M8ReportViewController ReportProductsView
 #define TAG_REPORT_PROBLEM 1030
 
+//log调试
+#ifndef __OPTIMIZE__
+#define NSLog(...) NSLog(__VA_ARGS__)
+#else
+#define NSLog(...) {}
+#endif
+//为空判断
+#define CHECK_Nil(object)  ((object == nil) ? @"" : object)
+#define CHECK_NilNumber(object)  ((object == nil) ? @0 : object)
+
+//是否iPhoneX
+#define Device_Is_iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+//ios版本
+#define IOS_VERSION ([[[UIDevice currentDevice] systemVersion] floatValue])
+//是否ios7（包括）以上版本
+#define IOS_7 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0 ? YES : NO)
+//是否ipad
+#define IOS_IPAD ([[UIDevice currentDevice].model isEqualToString:@"iPad"] ? YES : NO)
+//
+#define NaviHight ((IOS_7) ? 64 : 44)
+#define ScreenWidth ([UIScreen mainScreen].bounds.size.width)
+#define ScreenHeight ([UIScreen mainScreen].bounds.size.height)
+
+#define kMSGUIDESCREENHEIGHT CGRectGetHeight([UIScreen mainScreen].bounds)
+//
+#define CH_DEVICE_IS_IPHONE5 ([[UIScreen mainScreen] bounds].size.height == 568)
+#define CH_IPHONE6_OR_LATER ([[UIScreen mainScreen] bounds].size.height > 568)
+#define IS_IPHONE_6P_7P ([[UIScreen mainScreen] bounds].size.height >= 736.0)
+#define CHBarHight ((IOS_7) ? 20 : 0)
+
+//逻辑宽
+#define LOGIC_DEVICE_WIDTH   (750)
+//逻辑高
+#define LOGIC_DEVICE_HEIGHT  (1334)
+
+//逻辑尺寸
+#define GetLogicPixelX(value) ((ScreenWidth/LOGIC_DEVICE_WIDTH)*(value))
+
+//#define GetLogicPixelY(value) ((CHSScreenHeight/LOGIC_DEVICE_HEIGHT)*(value))
+//字体逻辑大小
+#define GetLogicFont(value) ((ScreenWidth*2/LOGIC_DEVICE_WIDTH)*(value))
+
+#define VIEWSAFEAREAINSETS(view) ({UIEdgeInsets i; if(@available(iOS 11.0, *)) {i = view.safeAreaInsets;} else {i = UIEdgeInsetsZero;} i;})
+
+//导航栏实际高度
+#define  NavBarOrginY   ((Device_Is_iPhoneX )? GetLogicPixelX(88):GetLogicPixelX(40))
+
+#define  __SYSTEM_PRD  //注释为发布环境
+#ifndef __SYSTEM_PRD
+#define weixinAppKey        @"wxc121e72ebe8ecda3"    // 微信key,store
+#define weiboAppKey         @"898686752"   // 微博keystore
+#define qzoneAppKey         @"1104231428"   // QQkey,store
+#else
+#define weixinAppKey        @"wx77c33b5ed429f30b"    // 微信key,UAT
+#define weiboAppKey         @"2767987536"   // 微博key,UAT
+#define qzoneAppKey         @"1103701371"   // QQ空间key,UAT
+#endif
 
 
+//单例
 //.h文件
 #define singleH(name) +(instancetype)share##name;
 //.m文件
@@ -116,7 +176,6 @@ alpha:1.0]
 {\
     return _instance;\
 }
-
 
 
 #endif /* PrefixHeader_pch */

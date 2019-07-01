@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "M8LoginViewController.h"
+#import "M8MloginViewController.h"
 #import "M8PagesViewController.h"
 #import "M8GlobalData.h"
 #import "customerModel.h"
@@ -23,7 +23,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    M8LoginViewController *loginvc = [[M8LoginViewController alloc] init];
+    M8MloginViewController *loginvc = [[M8MloginViewController alloc] init];
     [self.window setBackgroundColor:[UIColor whiteColor]];
     if ([self isFirstEnter]) {
         M8PagesViewController *wvc = [[M8PagesViewController alloc] init];
@@ -78,7 +78,7 @@
     [wvc setEnterBlock:^{
         [[NSUserDefaults standardUserDefaults] setObject:@"isFirstEnterApp" forKey:isFirstEnterApp];
         [[NSUserDefaults standardUserDefaults] synchronize];
-        M8LoginViewController *loginvc = [[M8LoginViewController alloc] init];
+        M8MloginViewController *loginvc = [[M8MloginViewController alloc] init];
         self.window.rootViewController = loginvc;
     }];
     [self.window makeKeyAndVisible];

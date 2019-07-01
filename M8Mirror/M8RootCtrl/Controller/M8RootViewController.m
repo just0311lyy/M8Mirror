@@ -8,7 +8,7 @@
 
 #import "M8RootViewController.h"
 #import "M8MainViewController.h"
-#import "M8CustomerListViewController.h"
+#import "M8MClientListViewController.h"
 #import "M8InfomationViewController.h"
 #import "M8ProductViewController.h"
 #import "M8ManageViewController.h"
@@ -35,7 +35,7 @@
     mainNavc.tabBarItem.selectedImage = homeSelectedImage;
 
     // 客户档案
-    M8CustomerListViewController *listVC = [[M8CustomerListViewController alloc]init];
+    M8MClientListViewController *listVC = [[M8MClientListViewController alloc]init];
     listVC.title = @"客户列表";
     UINavigationController *listNavc = [[UINavigationController alloc]initWithRootViewController:listVC];
     listNavc.tabBarItem.title = @"客户";

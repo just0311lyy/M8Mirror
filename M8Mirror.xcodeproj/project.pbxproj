@@ -91,7 +91,6 @@
 		7DA08996204D57F800D9CB5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA08995204D57F800D9CB5C /* main.m */; };
 		7DA089A0204D57F900D9CB5C /* M8MirrorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA0899F204D57F900D9CB5C /* M8MirrorTests.m */; };
 		7DA089AB204D57F900D9CB5C /* M8MirrorUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA089AA204D57F900D9CB5C /* M8MirrorUITests.m */; };
-		7DA089C6204D9A0A00D9CB5C /* M8LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA089C5204D9A0A00D9CB5C /* M8LoginViewController.m */; };
 		7DA089C9204D9A3300D9CB5C /* M8PagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA089C8204D9A3300D9CB5C /* M8PagesViewController.m */; };
 		7DA089D9204E4B3800D9CB5C /* login_bg_gif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 7DA089D5204E4B3800D9CB5C /* login_bg_gif.gif */; };
 		7DA089DA204E4B3800D9CB5C /* login_bg01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7DA089D6204E4B3800D9CB5C /* login_bg01.jpg */; };
@@ -110,7 +109,6 @@
 		7DA08A332051939500D9CB5C /* M8InfomationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA08A322051939500D9CB5C /* M8InfomationViewController.m */; };
 		7DA08A36205193B100D9CB5C /* M8ManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA08A35205193B100D9CB5C /* M8ManageViewController.m */; };
 		7DA08A39205193C400D9CB5C /* M8SolveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA08A38205193C400D9CB5C /* M8SolveViewController.m */; };
-		7DA08A3C205193EA00D9CB5C /* M8CustomerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA08A3B205193EA00D9CB5C /* M8CustomerListViewController.m */; };
 		7DA08A432051986D00D9CB5C /* M8TopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA08A422051986D00D9CB5C /* M8TopView.m */; };
 		7DA08A49205305DD00D9CB5C /* YJSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA08A45205305DD00D9CB5C /* YJSliderView.m */; };
 		7DA08A4A205305DD00D9CB5C /* DotCountLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA08A47205305DD00D9CB5C /* DotCountLabel.m */; };
@@ -128,7 +126,6 @@
 		7DB19C6C2053BA5B009B8455 /* HCSortString.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB19C602053BA5B009B8455 /* HCSortString.m */; };
 		7DB19C6D2053BA5B009B8455 /* UIAlertController+HCAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB19C612053BA5B009B8455 /* UIAlertController+HCAdd.m */; };
 		7DB19C742053C07A009B8455 /* customerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB19C732053C07A009B8455 /* customerModel.m */; };
-		7DB19C7720543555009B8455 /* M8CustomerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB19C7620543555009B8455 /* M8CustomerDetailViewController.m */; };
 		7DB19C7A205439C9009B8455 /* customerListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB19C79205439C9009B8455 /* customerListCell.m */; };
 		7DB19C7D2054433D009B8455 /* DetailMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB19C7C2054433D009B8455 /* DetailMessageView.m */; };
 		7DB19C8320558AD3009B8455 /* M8CustomerEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB19C8220558AD3009B8455 /* M8CustomerEditViewController.m */; };
@@ -250,6 +247,12 @@
 		7DD0DFAC2073EEFF00A0EA9E /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DD0DFAB2073EEFF00A0EA9E /* search.png */; };
 		7DF2EA662119F3EE00575713 /* infoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7DF2EA652119F3EE00575713 /* infoPlist.strings */; };
 		7DF2EA692119F92600575713 /* LYLocalizeConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DF2EA682119F92600575713 /* LYLocalizeConfig.m */; };
+		D762058222C1D42A0044CD49 /* M8BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D762058022C1D4290044CD49 /* M8BaseViewController.m */; };
+		D762058522C1D6590044CD49 /* M8MloginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D762058422C1D6580044CD49 /* M8MloginViewController.m */; };
+		D762058A22C1D7800044CD49 /* M8MClientDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D762058622C1D77F0044CD49 /* M8MClientDetailViewController.m */; };
+		D762058B22C1D7800044CD49 /* M8MClientListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D762058922C1D7800044CD49 /* M8MClientListViewController.m */; };
+		D762058E22C1D8170044CD49 /* M8MreportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D762058D22C1D8170044CD49 /* M8MreportViewController.m */; };
+		D762059122C1D8550044CD49 /* ClientDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D762059022C1D8550044CD49 /* ClientDetailCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -432,8 +435,6 @@
 		7DA089A6204D57F900D9CB5C /* M8MirrorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = M8MirrorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DA089AA204D57F900D9CB5C /* M8MirrorUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = M8MirrorUITests.m; sourceTree = "<group>"; };
 		7DA089AC204D57F900D9CB5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7DA089C4204D9A0A00D9CB5C /* M8LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = M8LoginViewController.h; sourceTree = "<group>"; };
-		7DA089C5204D9A0A00D9CB5C /* M8LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = M8LoginViewController.m; sourceTree = "<group>"; };
 		7DA089C7204D9A3300D9CB5C /* M8PagesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = M8PagesViewController.h; sourceTree = "<group>"; };
 		7DA089C8204D9A3300D9CB5C /* M8PagesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = M8PagesViewController.m; sourceTree = "<group>"; };
 		7DA089CA204DA44900D9CB5C /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -466,8 +467,6 @@
 		7DA08A35205193B100D9CB5C /* M8ManageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = M8ManageViewController.m; sourceTree = "<group>"; };
 		7DA08A37205193C400D9CB5C /* M8SolveViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = M8SolveViewController.h; sourceTree = "<group>"; };
 		7DA08A38205193C400D9CB5C /* M8SolveViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = M8SolveViewController.m; sourceTree = "<group>"; };
-		7DA08A3A205193EA00D9CB5C /* M8CustomerListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = M8CustomerListViewController.h; sourceTree = "<group>"; };
-		7DA08A3B205193EA00D9CB5C /* M8CustomerListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = M8CustomerListViewController.m; sourceTree = "<group>"; };
 		7DA08A412051986D00D9CB5C /* M8TopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = M8TopView.h; sourceTree = "<group>"; };
 		7DA08A422051986D00D9CB5C /* M8TopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = M8TopView.m; sourceTree = "<group>"; };
 		7DA08A45205305DD00D9CB5C /* YJSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YJSliderView.m; sourceTree = "<group>"; };
@@ -500,8 +499,6 @@
 		7DB19C622053BA5B009B8455 /* HCSortString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCSortString.h; sourceTree = "<group>"; };
 		7DB19C722053C07A009B8455 /* customerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = customerModel.h; sourceTree = "<group>"; };
 		7DB19C732053C07A009B8455 /* customerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = customerModel.m; sourceTree = "<group>"; };
-		7DB19C7520543555009B8455 /* M8CustomerDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = M8CustomerDetailViewController.h; sourceTree = "<group>"; };
-		7DB19C7620543555009B8455 /* M8CustomerDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = M8CustomerDetailViewController.m; sourceTree = "<group>"; };
 		7DB19C78205439C9009B8455 /* customerListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = customerListCell.h; sourceTree = "<group>"; };
 		7DB19C79205439C9009B8455 /* customerListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = customerListCell.m; sourceTree = "<group>"; };
 		7DB19C7B2054433D009B8455 /* DetailMessageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailMessageView.h; sourceTree = "<group>"; };
@@ -669,6 +666,18 @@
 		7DF2EA672119F92600575713 /* LYLocalizeConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LYLocalizeConfig.h; sourceTree = "<group>"; };
 		7DF2EA682119F92600575713 /* LYLocalizeConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYLocalizeConfig.m; sourceTree = "<group>"; };
 		A5D056F02178AC8A4DA174A1 /* Pods-M8Mirror.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-M8Mirror.debug.xcconfig"; path = "Pods/Target Support Files/Pods-M8Mirror/Pods-M8Mirror.debug.xcconfig"; sourceTree = "<group>"; };
+		D762058022C1D4290044CD49 /* M8BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M8BaseViewController.m; sourceTree = "<group>"; };
+		D762058122C1D42A0044CD49 /* M8BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M8BaseViewController.h; sourceTree = "<group>"; };
+		D762058322C1D6580044CD49 /* M8MloginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M8MloginViewController.h; sourceTree = "<group>"; };
+		D762058422C1D6580044CD49 /* M8MloginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M8MloginViewController.m; sourceTree = "<group>"; };
+		D762058622C1D77F0044CD49 /* M8MClientDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M8MClientDetailViewController.m; sourceTree = "<group>"; };
+		D762058722C1D7800044CD49 /* M8MClientDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M8MClientDetailViewController.h; sourceTree = "<group>"; };
+		D762058822C1D7800044CD49 /* M8MClientListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M8MClientListViewController.h; sourceTree = "<group>"; };
+		D762058922C1D7800044CD49 /* M8MClientListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M8MClientListViewController.m; sourceTree = "<group>"; };
+		D762058C22C1D8160044CD49 /* M8MreportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M8MreportViewController.h; sourceTree = "<group>"; };
+		D762058D22C1D8170044CD49 /* M8MreportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M8MreportViewController.m; sourceTree = "<group>"; };
+		D762058F22C1D8550044CD49 /* ClientDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientDetailCell.h; sourceTree = "<group>"; };
+		D762059022C1D8550044CD49 /* ClientDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientDetailCell.m; sourceTree = "<group>"; };
 		DB0D187D679B07B7938C48A8 /* Pods-M8Mirror.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-M8Mirror.release.xcconfig"; path = "Pods/Target Support Files/Pods-M8Mirror/Pods-M8Mirror.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1018,8 +1027,8 @@
 		7DA089C2204D991900D9CB5C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				7DA089C4204D9A0A00D9CB5C /* M8LoginViewController.h */,
-				7DA089C5204D9A0A00D9CB5C /* M8LoginViewController.m */,
+				D762058322C1D6580044CD49 /* M8MloginViewController.h */,
+				D762058422C1D6580044CD49 /* M8MloginViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1222,14 +1231,16 @@
 		7DA08A27205191F300D9CB5C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7DA08A3A205193EA00D9CB5C /* M8CustomerListViewController.h */,
-				7DA08A3B205193EA00D9CB5C /* M8CustomerListViewController.m */,
-				7DB19C7520543555009B8455 /* M8CustomerDetailViewController.h */,
-				7DB19C7620543555009B8455 /* M8CustomerDetailViewController.m */,
+				D762058722C1D7800044CD49 /* M8MClientDetailViewController.h */,
+				D762058622C1D77F0044CD49 /* M8MClientDetailViewController.m */,
+				D762058822C1D7800044CD49 /* M8MClientListViewController.h */,
+				D762058922C1D7800044CD49 /* M8MClientListViewController.m */,
 				7DB19C8120558AD3009B8455 /* M8CustomerEditViewController.h */,
 				7DB19C8220558AD3009B8455 /* M8CustomerEditViewController.m */,
 				7D1E7873209EF67500579FB0 /* M8ContentEditViewController.h */,
 				7D1E7874209EF67500579FB0 /* M8ContentEditViewController.m */,
+				D762058C22C1D8160044CD49 /* M8MreportViewController.h */,
+				D762058D22C1D8170044CD49 /* M8MreportViewController.m */,
 				7DB19C91205CECD8009B8455 /* M8ReportViewController.h */,
 				7DB19C92205CECD8009B8455 /* M8ReportViewController.m */,
 				7D25B02420DC032300F96834 /* SugProductsShowViewController.h */,
@@ -1349,6 +1360,8 @@
 		7DA08A40205197EA00D9CB5C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D762058F22C1D8550044CD49 /* ClientDetailCell.h */,
+				D762059022C1D8550044CD49 /* ClientDetailCell.m */,
 				7DA08A412051986D00D9CB5C /* M8TopView.h */,
 				7DA08A422051986D00D9CB5C /* M8TopView.m */,
 				7DB19C78205439C9009B8455 /* customerListCell.h */,
@@ -1475,6 +1488,8 @@
 			children = (
 				7DB19C96205FD301009B8455 /* M8RootViewController.h */,
 				7DB19C97205FD301009B8455 /* M8RootViewController.m */,
+				D762058122C1D42A0044CD49 /* M8BaseViewController.h */,
+				D762058022C1D4290044CD49 /* M8BaseViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2017,6 +2032,7 @@
 				7DC8F20020811A6900C1CB53 /* M8AdminViewController.m in Sources */,
 				7DB19C8320558AD3009B8455 /* M8CustomerEditViewController.m in Sources */,
 				7D1D315420976E5400B3E98A /* ImagesSelectedCell.m in Sources */,
+				D762058B22C1D7800044CD49 /* M8MClientListViewController.m in Sources */,
 				7D25B01720C7F6F800F96834 /* CGXAddressPcikerView.m in Sources */,
 				7D25AFF420C29E0E00F96834 /* BottomPhotoCompareView.m in Sources */,
 				7DD09626206A8E6C003D11A0 /* M8GlobalData.m in Sources */,
@@ -2038,6 +2054,7 @@
 				7DA08A4D2053074C00D9CB5C /* SliderContentViewController.m in Sources */,
 				7D25B04B20E4A38700F96834 /* YKLineDataObject.m in Sources */,
 				7DB19C652053BA5B009B8455 /* PinyinHelper.m in Sources */,
+				D762058A22C1D7800044CD49 /* M8MClientDetailViewController.m in Sources */,
 				7DA08A4A205305DD00D9CB5C /* DotCountLabel.m in Sources */,
 				7DD0DF872070CEEC00A0EA9E /* YBPopupMenuPath.m in Sources */,
 				7D3BBF0020EB63AD0040E37F /* NSArray+NSString.m in Sources */,
@@ -2054,6 +2071,7 @@
 				7DA08A49205305DD00D9CB5C /* YJSliderView.m in Sources */,
 				7D25B01D20C7F6F800F96834 /* CGXPickerView.m in Sources */,
 				7DA08A39205193C400D9CB5C /* M8SolveViewController.m in Sources */,
+				D762059122C1D8550044CD49 /* ClientDetailCell.m in Sources */,
 				7D25B01620C7F6F800F96834 /* NSDate+CGXPicker.m in Sources */,
 				7D3BBEF620E895ED0040E37F /* LanguageViewCell.m in Sources */,
 				7D25AFF120BC5D3400F96834 /* MOCompareViewController.m in Sources */,
@@ -2076,13 +2094,13 @@
 				7D25AFC520B03B0E00F96834 /* DescribeView.m in Sources */,
 				7D25B01C20C7F6F800F96834 /* CGXStringPickerView.m in Sources */,
 				7DC8F2102084C91E00C1CB53 /* SelectPhotoManager.m in Sources */,
-				7DB19C7720543555009B8455 /* M8CustomerDetailViewController.m in Sources */,
 				7DA08A07204ED29100D9CB5C /* M8MainViewController.m in Sources */,
 				7D25AFE820B472F000F96834 /* PhotoView.m in Sources */,
 				7DC8F1FA2081102D00C1CB53 /* settingViewCell.m in Sources */,
 				7DD095FE20611ED5003D11A0 /* CustomerViewCell.m in Sources */,
 				7D25B00220C392DA00F96834 /* CompareTimesViewCell.m in Sources */,
 				7DC8F2062081BA4C00C1CB53 /* AdminViewCell.m in Sources */,
+				D762058522C1D6590044CD49 /* M8MloginViewController.m in Sources */,
 				7DA08A432051986D00D9CB5C /* M8TopView.m in Sources */,
 				7D1D31332093823400B3E98A /* MJProperty.m in Sources */,
 				7DA08A20205170FA00D9CB5C /* CALayer+FSUI.m in Sources */,
@@ -2105,6 +2123,7 @@
 				7D1D315D20980F7500B3E98A /* LYImageSaveManager.m in Sources */,
 				7DA089EF204E8E4400D9CB5C /* UIImage+category.m in Sources */,
 				7DD0DF862070CEEC00A0EA9E /* YBRectConst.m in Sources */,
+				D762058222C1D42A0044CD49 /* M8BaseViewController.m in Sources */,
 				7DB19CB22060B06A009B8455 /* DeviceSingle.m in Sources */,
 				7D25B02020DA0EFC00F96834 /* ReportProductsView.m in Sources */,
 				7D1D314420938BCA00B3E98A /* XMLReader.m in Sources */,
@@ -2115,15 +2134,14 @@
 				7D25B02620DC032300F96834 /* SugProductsShowViewController.m in Sources */,
 				7D25B04F20E4A38700F96834 /* YKUIConfig.m in Sources */,
 				7DB19C682053BA5B009B8455 /* ZYPinYinSearch.m in Sources */,
+				D762058E22C1D8170044CD49 /* M8MreportViewController.m in Sources */,
 				7DF2EA692119F92600575713 /* LYLocalizeConfig.m in Sources */,
 				7DC8F21B208E27CC00C1CB53 /* ProductNetModel.m in Sources */,
 				7DD095FB2060C76B003D11A0 /* MainTabbarView.m in Sources */,
-				7DA08A3C205193EA00D9CB5C /* M8CustomerListViewController.m in Sources */,
 				7DD0961E206A573C003D11A0 /* NSString+Wrapper.m in Sources */,
 				7DD0DF97207123BD00A0EA9E /* ProductViewCell.m in Sources */,
 				7DC8F1DF207CD0B900C1CB53 /* M8ProductEditViewController.m in Sources */,
 				7DC8F221208E361500C1CB53 /* ProductNetCell.m in Sources */,
-				7DA089C6204D9A0A00D9CB5C /* M8LoginViewController.m in Sources */,
 				7DC8F217208E246200C1CB53 /* ProductNetworkViewController.m in Sources */,
 				7D25AFFF20C38DD200F96834 /* CustomTestCell.m in Sources */,
 				7DD096092068FF87003D11A0 /* HWPopTool.m in Sources */,

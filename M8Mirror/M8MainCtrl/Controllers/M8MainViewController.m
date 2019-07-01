@@ -11,7 +11,7 @@
 #import "M8InfomationViewController.h"
 #import "M8SolveViewController.h"
 #import "M8ManageViewController.h"
-#import "M8CustomerDetailViewController.h"
+#import "M8MClientDetailViewController.h"
 #import "YHLoopScrollView.h"
 //#import "M8MainTitleView.h"
 //#import "M8SearchView.h"
@@ -215,7 +215,7 @@
 //    NSString *msg = cell.nameLb.text;
 //    NSLog(@"%@",msg);
     customerModel* customerModel = _globalCustAry[indexPath.row];
-    M8CustomerDetailViewController *cdvc = [[M8CustomerDetailViewController alloc] init];
+    M8MClientDetailViewController *cdvc = [[M8MClientDetailViewController alloc] init];
     cdvc.detailModel = customerModel;
     [self setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:cdvc animated:YES];
