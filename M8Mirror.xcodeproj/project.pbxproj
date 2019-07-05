@@ -253,6 +253,7 @@
 		D762058B22C1D7800044CD49 /* M8MClientListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D762058922C1D7800044CD49 /* M8MClientListViewController.m */; };
 		D762058E22C1D8170044CD49 /* M8MreportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D762058D22C1D8170044CD49 /* M8MreportViewController.m */; };
 		D762059122C1D8550044CD49 /* ClientDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D762059022C1D8550044CD49 /* ClientDetailCell.m */; };
+		D7CF9F2D22CEEDAE00B24AEE /* M8MProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CF9F2C22CEEDAE00B24AEE /* M8MProductViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -678,6 +679,8 @@
 		D762058D22C1D8170044CD49 /* M8MreportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M8MreportViewController.m; sourceTree = "<group>"; };
 		D762058F22C1D8550044CD49 /* ClientDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientDetailCell.h; sourceTree = "<group>"; };
 		D762059022C1D8550044CD49 /* ClientDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientDetailCell.m; sourceTree = "<group>"; };
+		D7CF9F2B22CEEDAE00B24AEE /* M8MProductViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = M8MProductViewController.h; sourceTree = "<group>"; };
+		D7CF9F2C22CEEDAE00B24AEE /* M8MProductViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = M8MProductViewController.m; sourceTree = "<group>"; };
 		DB0D187D679B07B7938C48A8 /* Pods-M8Mirror.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-M8Mirror.release.xcconfig"; path = "Pods/Target Support Files/Pods-M8Mirror/Pods-M8Mirror.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1509,6 +1512,8 @@
 			children = (
 				7DB19C9B205FF9F4009B8455 /* M8ProductViewController.h */,
 				7DB19C9C205FF9F4009B8455 /* M8ProductViewController.m */,
+				D7CF9F2B22CEEDAE00B24AEE /* M8MProductViewController.h */,
+				D7CF9F2C22CEEDAE00B24AEE /* M8MProductViewController.m */,
 				7DC8F1DD207CD0B900C1CB53 /* M8ProductEditViewController.h */,
 				7DC8F1DE207CD0B900C1CB53 /* M8ProductEditViewController.m */,
 				7DC8F1E0207E4B5C00C1CB53 /* M8ProductDetailViewController.h */,
@@ -2144,6 +2149,7 @@
 				7DC8F221208E361500C1CB53 /* ProductNetCell.m in Sources */,
 				7DC8F217208E246200C1CB53 /* ProductNetworkViewController.m in Sources */,
 				7D25AFFF20C38DD200F96834 /* CustomTestCell.m in Sources */,
+				D7CF9F2D22CEEDAE00B24AEE /* M8MProductViewController.m in Sources */,
 				7DD096092068FF87003D11A0 /* HWPopTool.m in Sources */,
 				7DD096052062B53F003D11A0 /* ImageWithStringView.m in Sources */,
 				7D25B04E20E4A38700F96834 /* YKDrawLineView.m in Sources */,

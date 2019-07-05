@@ -49,7 +49,8 @@
     [super initNavBar];
     _leftNavBarBtn.hidden = YES;
     //导航栏右按钮
-    [_rightNavBarBtn setBackgroundImage:[UIImage scaleImage:[UIImage imageNamed:@"nav_add.png"] toSize:CGSizeMake(GetLogicPixelX(40), GetLogicPixelX(40))] forState:UIControlStateNormal];
+    [_rightNavBarBtn setImage:[UIImage scaleImage:[UIImage imageNamed:@"nav_add.png"] toSize:CGSizeMake(GetLogicPixelX(20), GetLogicPixelX(20))] forState:UIControlStateNormal];
+    
     [_rightNavBarBtn setTitle:nil forState:UIControlStateNormal];
 }
 

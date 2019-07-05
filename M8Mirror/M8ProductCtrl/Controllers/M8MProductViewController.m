@@ -1,74 +1,74 @@
 //
-//  M8ProductViewController.m
+//  M8MProductViewController.m
 //  M8Mirror
 //
-//  Created by 李阳洋 on 2018/3/19.
-//  Copyright © 2018年 lyy. All rights reserved.
+//  Created by YangyangLi on 2019/7/5.
+//  Copyright © 2019 lyy. All rights reserved.
 //
 
-#import "M8ProductViewController.h"
+#import "M8MProductViewController.h"
+#import "FSCustomButton.h"
 #import "M8ProductEditViewController.h"
 #import "FSCustomButton.h"
 #import "UIImage+category.h"
 #import "ProductKindView.h"
 #import "ProductModel.h"
 #import "ProductViewCell.h"
-@interface M8ProductViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,M8ProductEditViewControllerDelegate,ProductViewCellDelegate>
-@property(nonatomic,strong) FSCustomButton * titleBtn;
-@property (assign, nonatomic) NSInteger selectIndex;/*选择的语言cell索引*/
-@property (strong, nonatomic) NSArray *kindArr;
+
+@interface M8MProductViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,M8ProductEditViewControllerDelegate,ProductViewCellDelegate>
+
+@property (nonatomic, strong) FSCustomButton * titleBtn;
+@property (assign, nonatomic) NSInteger selectTypeIndex;/*选择的产品种类的索引*/
+@property (nonatomic, strong) NSArray *productTypeArray;
 @property (strong, nonatomic) UICollectionView *collectionView;
-@property (strong, nonatomic) NSMutableArray *showProductAry; //显示的产品
-//@property (strong, nonatomic) NSIndexPath *selectedIndexPath; //点击的
+@property (strong, nonatomic) NSMutableArray *productShowArray; //显示的产品
 @end
 
-@implementation M8ProductViewController
+@implementation M8MProductViewController
+
+-(void)dealloc{
+    // 移除当前所有通知
+    //    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"reloadProductList" object:nil];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBar.barTintColor = LOGO_COLOR;
-    self.view.backgroundColor = UIColorFromRGB(0xedf0f4);
-    [self initWithNav];
-    [self initWithProductData];
-    [self initWithCollection];
     //注册通知，监听客户列表刷新
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reflushProductListView) name:@"reloadProductList" object:nil];
 }
 
--(void)initWithNav{
-    _kindArr = @[@"全部",@"补水",@"淡斑",@"清洁",@"嫩肤",@"抗衰",@"修复",@"保养"];
+-(void)initNavBar{
+    [super initNavBar];
+    _leftNavBarBtn.hidden = YES;
+    //导航栏右按钮
+    [_rightNavBarBtn setImage:[UIImage scaleImage:[UIImage imageNamed:@"nav_add.png"] toSize:CGSizeMake(GetLogicPixelX(20), GetLogicPixelX(20))] forState:UIControlStateNormal];
     
-    _titleBtn =[FSCustomButton buttonWithType:UIButtonTypeCustom];
+    [_rightNavBarBtn setTitle:nil forState:UIControlStateNormal];
+    
+    _titleBtn = [FSCustomButton buttonWithType:UIButtonTypeCustom];
     _titleBtn.frame = CGRectMake(20, 20, 100, 40);
     _titleBtn.buttonImagePosition = FSCustomButtonImagePositionRight;
     _titleBtn.adjustsImageTintColorAutomatically = YES;
     _titleBtn.adjustsTitleTintColorAutomatically = YES;
     [_titleBtn setTintColor:[UIColor whiteColor]];
     [_titleBtn setImage:[UIImage scaleImage:[UIImage imageNamed:@"nav_down.png"] toSize:CGSizeMake(14, 8)] forState:UIControlStateNormal];
-    [_titleBtn setTitle:[_kindArr objectAtIndex:0] forState:UIControlStateNormal];
+    [_titleBtn setTitle:[self.productTypeArray objectAtIndex:0] forState:UIControlStateNormal];
     [_titleBtn.titleLabel setFont:[UIFont systemFontOfSize:24]];
     [_titleBtn addTarget:self action:@selector(showAllKindsAction) forControlEvents:UIControlEventTouchUpInside];
     _titleBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0);
     self.navigationItem.titleView = _titleBtn;
-    
-    //导航栏右按钮
-    UIButton *rightBarBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [rightBarBtn setBackgroundImage:[UIImage scaleImage:[UIImage imageNamed:@"nav_add.png"] toSize:CGSizeMake(25, 25)] forState:UIControlStateNormal];
-    [rightBarBtn addTarget:self action:@selector(rightButtonClick) forControlEvents:UIControlEventTouchUpInside];
-    rightBarBtn.frame = CGRectMake(0, 0, 25, 25);
-    UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithCustomView:rightBarBtn];
-    self.navigationItem.rightBarButtonItem = rightBarItem;
 }
 
--(void)initWithProductData{
-    NSArray *array = [[NSArray alloc] init];
-    array = _globalProductsAry;
+-(void)initData{
+    [super initData];
     //默认显示全部产品
-    _showProductAry = [[NSMutableArray alloc] initWithCapacity:10];
-    [_showProductAry addObjectsFromArray:array];
+    [self.productShowArray addObjectsFromArray:_globalProductsAry];
+    
 }
 
--(void)initWithCollection{
+-(void)initView{
+    [super initView];
     //1.初始化layout
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     //设置collectionView滚动方向
@@ -85,7 +85,7 @@
     [self.view addSubview:_collectionView];
     //    _mainCollectionView.alwaysBounceVertical = YES;
     _collectionView.showsHorizontalScrollIndicator = NO;//取消滚动条
-//    _collectionView.pagingEnabled = YES;//分页效果
+    //    _collectionView.pagingEnabled = YES;//分页效果
     _collectionView.backgroundColor = [UIColor clearColor];
     //3.注册collectionViewCell
     //注意，此处的ReuseIdentifier 必须和 cellForItemAtIndexPath 方法中 一致 均为 cellId
@@ -95,6 +95,7 @@
     //4.设置代理
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
+    
 }
 
 #pragma mark collectionView代理方法
@@ -107,7 +108,7 @@
 //每个section的item个数
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return _showProductAry.count;
+    return self.productShowArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -115,7 +116,7 @@
     
     ProductViewCell *cell = (ProductViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cellId" forIndexPath:indexPath];
     cell.delegate = self;
-    ProductModel *productModel = _showProductAry[indexPath.row];
+    ProductModel *productModel = _productShowArray[indexPath.row];
     if (productModel.base64ImgStr) {
         cell.imgView.image = [self imageWithBase64String:productModel.base64ImgStr];
     }
@@ -185,14 +186,14 @@
 //点击item方法
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    ProductModel *productModel = _globalProductsAry[indexPath.row];
-//    M8ProductEditViewController *pevc = [[M8ProductEditViewController alloc] init];
-//    pevc.delegate = self;
-//    pevc.currentProduct = productModel;
-//    pevc.title = @"编辑";
-//    [self setHidesBottomBarWhenPushed:YES];
-//    [self.navigationController pushViewController:pevc animated:YES];
-//    [self setHidesBottomBarWhenPushed:NO];
+    //    ProductModel *productModel = _globalProductsAry[indexPath.row];
+    //    M8ProductEditViewController *pevc = [[M8ProductEditViewController alloc] init];
+    //    pevc.delegate = self;
+    //    pevc.currentProduct = productModel;
+    //    pevc.title = @"编辑";
+    //    [self setHidesBottomBarWhenPushed:YES];
+    //    [self.navigationController pushViewController:pevc animated:YES];
+    //    [self setHidesBottomBarWhenPushed:NO];
 }
 
 #pragma mark - - ProductViewCellDelegate
@@ -205,7 +206,7 @@
     //从全局数组中删除该数据
     [_globalProductsAry removeObject:productModel];
     //产品源数组中移除该数据
-    [_showProductAry removeObject:productModel];
+    [_productShowArray removeObject:productModel];
     //从数据库删除该数据
     [self deleteProductObject:productModel];
     [self.collectionView reloadData];
@@ -231,15 +232,14 @@
 -(void)showAllKindsAction{
     _titleBtn.enabled = NO;
     __weak typeof(self) weakSelf = self;
-    ProductKindView *kindView = [[ProductKindView alloc] initKindViewWithArr:_kindArr current:_selectIndex];
+    ProductKindView *kindView = [[ProductKindView alloc] initKindViewWithArr:self.productTypeArray current:_selectTypeIndex];
     kindView.kindSelectIndex = ^(NSInteger index) {
-        NSLog(@"当前选中语言%@",_kindArr[index]);
-        weakSelf.selectIndex = index;
+        NSLog(@"当前选中语言%@",_productTypeArray[index]);
+        weakSelf.selectTypeIndex = index;
         weakSelf.titleBtn.enabled = YES;
-        [_titleBtn setTitle:_kindArr[index] forState:UIControlStateNormal];
+        [_titleBtn setTitle:_productTypeArray[index] forState:UIControlStateNormal];
         //对显示的数据进行筛选
         [self showProductsWithSelectedIndex:index];
-        
     };
     
     kindView.kindViewFadeOut = ^{
@@ -255,8 +255,8 @@
     if (index == 0) {
         selectedIndexStr = @"07";
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            [_showProductAry removeAllObjects];
-            [_showProductAry addObjectsFromArray:_globalProductsAry];
+            [_productShowArray removeAllObjects];
+            [_productShowArray addObjectsFromArray:_globalProductsAry];
             //通知主线程刷新
             dispatch_async(dispatch_get_main_queue(), ^{
                 //回调或者说是通知主线程刷新，
@@ -274,7 +274,7 @@
                     //如果产品含有此属性则筛选出此产品
                     if (![model.attrib isEqualToString:@""] && model.attrib != nil) {
                         NSArray *attAry = [model.attrib componentsSeparatedByString:@","];
-//                        NSMutableArray *newArr = [[NSMutableArray alloc] initWithCapacity:7];
+                        //                        NSMutableArray *newArr = [[NSMutableArray alloc] initWithCapacity:7];
                         for (int j =0;j<attAry.count; j++) {
                             NSString *attFlag = [attAry objectAtIndex:j];
                             if ([attFlag isEqualToString:selectedIndexStr]) {
@@ -284,11 +284,11 @@
                     }
                 }
             }
-            [_showProductAry removeAllObjects];
-            [_showProductAry addObjectsFromArray:productsAry];
-                       //通知主线程刷新
+            [_productShowArray removeAllObjects];
+            [_productShowArray addObjectsFromArray:productsAry];
+            //通知主线程刷新
             dispatch_async(dispatch_get_main_queue(), ^{
-            //回调或者说是通知主线程刷新，
+                //回调或者说是通知主线程刷新，
                 [_collectionView reloadData];
             });
         });
@@ -306,20 +306,20 @@
 
 #pragma mark -- M8ProductEditViewControllerDelegate
 - (void)savedEditProduct:(ProductModel *)product withTitle:(NSString *)title{
-//    if ([title isEqualToString:@"新建"]) {
-//        
-//    }
-//    [_titleBtn setTitle:_kindArr[0] forState:UIControlStateNormal];
-//    [_showProductAry removeAllObjects];
-//    [self initWithProductData];
-//    [_collectionView reloadData];
+    //    if ([title isEqualToString:@"新建"]) {
+    //
+    //    }
+    //    [_titleBtn setTitle:_kindArr[0] forState:UIControlStateNormal];
+    //    [_showProductAry removeAllObjects];
+    //    [self initWithProductData];
+    //    [_collectionView reloadData];
     [self reflushProductListView];
 }
 
 -(void)reflushProductListView{
-    [_titleBtn setTitle:_kindArr[0] forState:UIControlStateNormal];
-    [_showProductAry removeAllObjects];
-    [self initWithProductData];
+    [_titleBtn setTitle:_productTypeArray[0] forState:UIControlStateNormal];
+    [_productShowArray removeAllObjects];
+    [_productShowArray addObjectsFromArray:_globalProductsAry];
     [_collectionView reloadData];
 }
 
@@ -341,15 +341,19 @@
     [db deleteProductByProductID:model.productId];
 }
 
-// 移除通知
--(void)dealloc{
-    //    [[NSNotificationCenter defaultCenter] removeObserver:self]; //移除当前所有通知
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"reloadProductList" object:nil];
+#pragma mark -- ** 懒加载 **
+-(NSArray *)productTypeArray{
+    if (!_productTypeArray) {
+        _productTypeArray = [[NSArray alloc] initWithObjects:@"全部",@"补水",@"淡斑",@"清洁",@"嫩肤",@"抗衰",@"修复",@"保养", nil];
+    }
+    return _productTypeArray;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(NSMutableArray *)productShowArray{
+    if (!_productShowArray) {
+        _productShowArray = [NSMutableArray arrayWithCapacity:10];
+    }
+    return _productShowArray;
 }
 
 /*

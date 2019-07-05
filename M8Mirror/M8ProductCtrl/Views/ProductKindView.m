@@ -91,6 +91,9 @@
 
 - (void)fadeOut
 {
+    if (self.kindViewFadeOut) {
+        self.kindViewFadeOut();
+    }
     [UIView animateWithDuration:0.3 animations:^{
         self.frame = CGRectMake(0, - viewHeight, SCREEN_W, viewHeight);
     } completion:^(BOOL finished) {

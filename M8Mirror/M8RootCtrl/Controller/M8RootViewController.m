@@ -10,7 +10,8 @@
 #import "M8MainViewController.h"
 #import "M8MClientListViewController.h"
 #import "M8InfomationViewController.h"
-#import "M8ProductViewController.h"
+//#import "M8ProductViewController.h"
+#import "M8MProductViewController.h"
 #import "M8ManageViewController.h"
 #import "UIImage+category.h"
 @interface M8RootViewController ()
@@ -59,7 +60,7 @@
     infoNavc.tabBarItem.selectedImage = infoSelectedImage;
     
     // 产品中心
-    M8ProductViewController *productVC = [[M8ProductViewController alloc]init];
+    M8MProductViewController *productVC = [[M8MProductViewController alloc]init];
     productVC.title = @"产品列表";
     UINavigationController *productNavc = [[UINavigationController alloc]initWithRootViewController:productVC];
     productNavc.tabBarItem.title = @"产品";

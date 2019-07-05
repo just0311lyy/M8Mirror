@@ -25,7 +25,7 @@
     self.navigationController.navigationBar.barTintColor = LOGO_COLOR;
     self.navigationController.navigationBar.titleTextAttributes=
     @{NSForegroundColorAttributeName:[UIColor whiteColor],
-      NSFontAttributeName:[UIFont systemFontOfSize:GetLogicFont(18)]};
+      NSFontAttributeName:[UIFont systemFontOfSize:GetLogicFont(10)]};
     //导航栏左边返回按钮
     _leftNavBarBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     //    [leftBarBtn setTitle:@"取消" forState:UIControlStateNormal];
@@ -46,7 +46,7 @@
 }
 
 -(void)initData{
-    B_ScreenWidth =[UIScreen mainScreen].bounds.size.width;
+    B_ScreenWidth = [UIScreen mainScreen].bounds.size.width;
     B_ScreenHeight = [UIScreen mainScreen].bounds.size.height;
     B_NavBarHeight = 64;
     B_NavBarOrginY = NavBarOrginY;
