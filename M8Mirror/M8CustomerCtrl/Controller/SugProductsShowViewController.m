@@ -138,9 +138,9 @@
     cell.titleLabel.text = model.name;
     cell.detailLabel.text = model.useMethod;
     cell.priceLabel.text = model.price;
-    if (model.base64ImgStr) {
-        cell.imgView.image = [self imageWithBase64String:model.base64ImgStr];
-    }
+//    if (model.base64ImgStr) {
+//        cell.imgView.image = [self imageWithBase64String:model.base64ImgStr];
+//    }
     return cell;
 }
 

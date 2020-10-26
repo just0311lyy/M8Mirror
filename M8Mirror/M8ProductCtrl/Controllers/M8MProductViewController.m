@@ -8,14 +8,15 @@
 
 #import "M8MProductViewController.h"
 #import "FSCustomButton.h"
-#import "M8ProductEditViewController.h"
+//#import "M8ProductEditViewController.h"
+#import "M8MProductEditViewController.h"
 #import "FSCustomButton.h"
 #import "UIImage+category.h"
 #import "ProductKindView.h"
 #import "ProductModel.h"
 #import "ProductViewCell.h"
 
-@interface M8MProductViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,M8ProductEditViewControllerDelegate,ProductViewCellDelegate>
+@interface M8MProductViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,ProductViewCellDelegate>
 
 @property (nonatomic, strong) FSCustomButton * titleBtn;
 @property (assign, nonatomic) NSInteger selectTypeIndex;/*选择的产品种类的索引*/
@@ -98,7 +99,7 @@
     
 }
 
-#pragma mark collectionView代理方法
+#pragma mark -- ** collectionView 代理方法 **
 //返回section个数
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -117,8 +118,8 @@
     ProductViewCell *cell = (ProductViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cellId" forIndexPath:indexPath];
     cell.delegate = self;
     ProductModel *productModel = _productShowArray[indexPath.row];
-    if (productModel.base64ImgStr) {
-        cell.imgView.image = [self imageWithBase64String:productModel.base64ImgStr];
+    if (productModel.imgDocumentPath) {
+        cell.imgView.image = [[UIImage alloc] initWithContentsOfFile:productModel.imgDocumentPath];
     }
     cell.titleLabel.text = productModel.name;
     cell.detailLabel.text = productModel.useMethod;
@@ -196,7 +197,7 @@
     //    [self setHidesBottomBarWhenPushed:NO];
 }
 
-#pragma mark - - ProductViewCellDelegate
+#pragma mark -- ** ProductViewCellDelegate **
 -(void)deleteButtonClick:(UIButton *)sender{
     // 获取'删除按钮'所在的cell
     UICollectionViewCell *cell = (UICollectionViewCell *)[sender superview];
@@ -219,15 +220,21 @@
     NSIndexPath *indexPath = [_collectionView indexPathForCell:cell];
     
     ProductModel *productModel = _globalProductsAry[indexPath.row];
-    M8ProductEditViewController *pevc = [[M8ProductEditViewController alloc] init];
-    pevc.delegate = self;
+    M8MProductEditViewController *pevc = [[M8MProductEditViewController alloc] init];
     pevc.currentProduct = productModel;
-    pevc.title = @"编辑";
+    pevc.controllerType = ProductEditTypeEdit;
+    __weak typeof(self) weakSelf = self;
+    pevc.productEditBlock = ^(ProductModel * _Nonnull editProduct, ProductEditType editType) {
+        [weakSelf.productShowArray replaceObjectAtIndex:indexPath.row withObject:editProduct];
+        [weakSelf.collectionView reloadData];
+    };
+    
     [self setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:pevc animated:YES];
     [self setHidesBottomBarWhenPushed:NO];
 }
 
+#pragma mark -- ** buttonAction **
 //产品种类选择
 -(void)showAllKindsAction{
     _titleBtn.enabled = NO;
@@ -295,27 +302,44 @@
     }
 }
 
-#pragma mark -- base64String 转换为图片
--(UIImage *)imageWithBase64String:(NSString *)string{
-    // 将base64字符串转为NSData
-    NSData *decodeData = [[NSData alloc] initWithBase64EncodedString:string options:(NSDataBase64DecodingIgnoreUnknownCharacters)];
-    // 将NSData转为UIImage
-    UIImage *decodedImage = [UIImage imageWithData: decodeData];
-    return decodedImage;
+//#pragma mark -- base64String 转换为图片
+//-(UIImage *)imageWithBase64String:(NSString *)string{
+//    // 将base64字符串转为NSData
+//    NSData *decodeData = [[NSData alloc] initWithBase64EncodedString:string options:(NSDataBase64DecodingIgnoreUnknownCharacters)];
+//    // 将NSData转为UIImage
+//    UIImage *decodedImage = [UIImage imageWithData: decodeData];
+//    return decodedImage;
+//}
+
+//#pragma mark -- M8ProductEditViewControllerDelegate
+//- (void)savedEditProduct:(ProductModel *)product withTitle:(NSString *)title{
+//    //    if ([title isEqualToString:@"新建"]) {
+//    //
+//    //    }
+//    //    [_titleBtn setTitle:_kindArr[0] forState:UIControlStateNormal];
+//    //    [_showProductAry removeAllObjects];
+//    //    [self initWithProductData];
+//    //    [_collectionView reloadData];
+//    [self reflushProductListView];
+//}
+
+
+
+
+- (void)rightNavBarButtonClick{
+    M8MProductEditViewController *pevc = [[M8MProductEditViewController alloc] init];
+    pevc.controllerType = ProductEditTypeNewCreat;
+    __weak typeof(self) weakSelf = self;
+    pevc.productEditBlock = ^(ProductModel * _Nonnull editProduct, ProductEditType editType) {
+        [weakSelf.productShowArray insertObject:editProduct atIndex:0];
+        [weakSelf.collectionView reloadData];
+    };
+    [self setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:pevc animated:YES];
+    [self setHidesBottomBarWhenPushed:NO];
 }
 
-#pragma mark -- M8ProductEditViewControllerDelegate
-- (void)savedEditProduct:(ProductModel *)product withTitle:(NSString *)title{
-    //    if ([title isEqualToString:@"新建"]) {
-    //
-    //    }
-    //    [_titleBtn setTitle:_kindArr[0] forState:UIControlStateNormal];
-    //    [_showProductAry removeAllObjects];
-    //    [self initWithProductData];
-    //    [_collectionView reloadData];
-    [self reflushProductListView];
-}
-
+//刷新
 -(void)reflushProductListView{
     [_titleBtn setTitle:_productTypeArray[0] forState:UIControlStateNormal];
     [_productShowArray removeAllObjects];
@@ -323,17 +347,7 @@
     [_collectionView reloadData];
 }
 
-#pragma mark -- buttonAction
-- (void)rightButtonClick {
-    M8ProductEditViewController *pevc = [[M8ProductEditViewController alloc] init];
-    pevc.delegate = self;
-    pevc.title = @"新建";
-    [self setHidesBottomBarWhenPushed:YES];
-    [self.navigationController pushViewController:pevc animated:YES];
-    [self setHidesBottomBarWhenPushed:NO];
-}
-
-#pragma mark -- 数据库
+#pragma mark -- ** 数据库 **
 //从数据库删除产品
 -(void)deleteProductObject:(ProductModel *)model{
     LYSQLDataOperation *db = [LYSQLDataOperation sharedDataInstance];

@@ -284,7 +284,7 @@
         }else if ([_currentElement isEqualToString:@"syff"]){
             [_productModel setUseMethod:string];
         }else if ([_currentElement isEqualToString:@"cptx"]){
-            [_productModel setBase64ImgStr:string];
+//            [_productModel setBase64ImgStr:string];
         }else if ([_currentElement isEqualToString:@"putdate"]){
             [_productModel setPutdate:string];
         }else if ([_currentElement isEqualToString:@"deptid"]){

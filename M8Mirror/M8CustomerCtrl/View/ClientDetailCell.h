@@ -27,7 +27,7 @@
 @property (strong, nonatomic) UIImageView *SEVENImgView;
 @property (strong, nonatomic) UIImageView *EIGHTImgView;
 @property (strong, nonatomic) UIImageView *NINEImgView;
-@property (assign, nonatomic)id<ClientDetailCellDelegate> delegate;
+@property (assign, nonatomic) id<ClientDetailCellDelegate> delegate;
 @property (strong, nonatomic) ReportModel *reportModel;
 
 +(CGFloat)getCellHeight;

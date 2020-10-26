@@ -135,7 +135,6 @@
 		7DB19C90205C4005009B8455 /* CustomerDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB19C8F205C4005009B8455 /* CustomerDetailCell.m */; };
 		7DB19C93205CECD8009B8455 /* M8ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB19C92205CECD8009B8455 /* M8ReportViewController.m */; };
 		7DB19C98205FD301009B8455 /* M8RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB19C97205FD301009B8455 /* M8RootViewController.m */; };
-		7DB19C9D205FF9F4009B8455 /* M8ProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DB19C9C205FF9F4009B8455 /* M8ProductViewController.m */; };
 		7DB19CA0205FFE26009B8455 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7DB19CA2205FFE26009B8455 /* Localizable.strings */; };
 		7DB19CAA20601AD6009B8455 /* home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DB19CA620601AD5009B8455 /* home@2x.png */; };
 		7DB19CAB20601AD6009B8455 /* home@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DB19CA720601AD5009B8455 /* home@3x.png */; };
@@ -148,7 +147,6 @@
 		7DC8F1D7207BC56500C1CB53 /* EditCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8F1D6207BC56500C1CB53 /* EditCellView.m */; };
 		7DC8F1DA207C93A900C1CB53 /* EditSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8F1D9207C93A900C1CB53 /* EditSelectView.m */; };
 		7DC8F1DC207C999100C1CB53 /* button_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DC8F1DB207C999100C1CB53 /* button_selected.png */; };
-		7DC8F1DF207CD0B900C1CB53 /* M8ProductEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8F1DE207CD0B900C1CB53 /* M8ProductEditViewController.m */; };
 		7DC8F1E2207E4B5C00C1CB53 /* M8ProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC8F1E1207E4B5C00C1CB53 /* M8ProductDetailViewController.m */; };
 		7DC8F1EB207FA51B00C1CB53 /* my_infomation.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DC8F1E4207FA51B00C1CB53 /* my_infomation.png */; };
 		7DC8F1EC207FA51B00C1CB53 /* my_add.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DC8F1E5207FA51B00C1CB53 /* my_add.png */; };
@@ -254,6 +252,14 @@
 		D762058E22C1D8170044CD49 /* M8MreportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D762058D22C1D8170044CD49 /* M8MreportViewController.m */; };
 		D762059122C1D8550044CD49 /* ClientDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D762059022C1D8550044CD49 /* ClientDetailCell.m */; };
 		D7CF9F2D22CEEDAE00B24AEE /* M8MProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CF9F2C22CEEDAE00B24AEE /* M8MProductViewController.m */; };
+		D7CF9F4222CF047600B24AEE /* M8MProductEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CF9F3B22CF047600B24AEE /* M8MProductEditViewController.m */; };
+		D7CF9F4322CF047600B24AEE /* ProductInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CF9F3D22CF047600B24AEE /* ProductInfoModel.m */; };
+		D7CF9F4722CF050500B24AEE /* ProductEditInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CF9F4622CF050500B24AEE /* ProductEditInfoCell.m */; };
+		D7CF9F5922D4421100B24AEE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7CF9F5822D4421100B24AEE /* QuartzCore.framework */; };
+		D7CF9F5D22D4428900B24AEE /* YylToast.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CF9F5C22D4428900B24AEE /* YylToast.m */; };
+		D7CF9F6522D4738800B24AEE /* YylPathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CF9F6422D4738800B24AEE /* YylPathManager.m */; };
+		D7CF9F6822D4795E00B24AEE /* NSDate+YylCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CF9F6622D4795E00B24AEE /* NSDate+YylCategory.m */; };
+		D7CF9F6C22D4923300B24AEE /* SQLProductDataOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D7CF9F6B22D4923300B24AEE /* SQLProductDataOperation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -516,8 +522,6 @@
 		7DB19C92205CECD8009B8455 /* M8ReportViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = M8ReportViewController.m; sourceTree = "<group>"; };
 		7DB19C96205FD301009B8455 /* M8RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = M8RootViewController.h; sourceTree = "<group>"; };
 		7DB19C97205FD301009B8455 /* M8RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = M8RootViewController.m; sourceTree = "<group>"; };
-		7DB19C9B205FF9F4009B8455 /* M8ProductViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = M8ProductViewController.h; sourceTree = "<group>"; };
-		7DB19C9C205FF9F4009B8455 /* M8ProductViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = M8ProductViewController.m; sourceTree = "<group>"; };
 		7DB19CA1205FFE26009B8455 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7DB19CA5205FFF66009B8455 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		7DB19CA620601AD5009B8455 /* home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home@2x.png"; sourceTree = "<group>"; };
@@ -534,8 +538,6 @@
 		7DC8F1D8207C93A900C1CB53 /* EditSelectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditSelectView.h; sourceTree = "<group>"; };
 		7DC8F1D9207C93A900C1CB53 /* EditSelectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditSelectView.m; sourceTree = "<group>"; };
 		7DC8F1DB207C999100C1CB53 /* button_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_selected.png; sourceTree = "<group>"; };
-		7DC8F1DD207CD0B900C1CB53 /* M8ProductEditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = M8ProductEditViewController.h; sourceTree = "<group>"; };
-		7DC8F1DE207CD0B900C1CB53 /* M8ProductEditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = M8ProductEditViewController.m; sourceTree = "<group>"; };
 		7DC8F1E0207E4B5C00C1CB53 /* M8ProductDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = M8ProductDetailViewController.h; sourceTree = "<group>"; };
 		7DC8F1E1207E4B5C00C1CB53 /* M8ProductDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = M8ProductDetailViewController.m; sourceTree = "<group>"; };
 		7DC8F1E4207FA51B00C1CB53 /* my_infomation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = my_infomation.png; sourceTree = "<group>"; };
@@ -681,6 +683,21 @@
 		D762059022C1D8550044CD49 /* ClientDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientDetailCell.m; sourceTree = "<group>"; };
 		D7CF9F2B22CEEDAE00B24AEE /* M8MProductViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = M8MProductViewController.h; sourceTree = "<group>"; };
 		D7CF9F2C22CEEDAE00B24AEE /* M8MProductViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = M8MProductViewController.m; sourceTree = "<group>"; };
+		D7CF9F3A22CF047600B24AEE /* M8MProductEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M8MProductEditViewController.h; sourceTree = "<group>"; };
+		D7CF9F3B22CF047600B24AEE /* M8MProductEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M8MProductEditViewController.m; sourceTree = "<group>"; };
+		D7CF9F3D22CF047600B24AEE /* ProductInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductInfoModel.m; sourceTree = "<group>"; };
+		D7CF9F3E22CF047600B24AEE /* ProductInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductInfoModel.h; sourceTree = "<group>"; };
+		D7CF9F4522CF050500B24AEE /* ProductEditInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProductEditInfoCell.h; sourceTree = "<group>"; };
+		D7CF9F4622CF050500B24AEE /* ProductEditInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductEditInfoCell.m; sourceTree = "<group>"; };
+		D7CF9F5822D4421100B24AEE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D7CF9F5B22D4428900B24AEE /* YylToast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YylToast.h; sourceTree = "<group>"; };
+		D7CF9F5C22D4428900B24AEE /* YylToast.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YylToast.m; sourceTree = "<group>"; };
+		D7CF9F6322D4738800B24AEE /* YylPathManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YylPathManager.h; sourceTree = "<group>"; };
+		D7CF9F6422D4738800B24AEE /* YylPathManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YylPathManager.m; sourceTree = "<group>"; };
+		D7CF9F6622D4795E00B24AEE /* NSDate+YylCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+YylCategory.m"; sourceTree = "<group>"; };
+		D7CF9F6722D4795E00B24AEE /* NSDate+YylCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+YylCategory.h"; sourceTree = "<group>"; };
+		D7CF9F6A22D4923300B24AEE /* SQLProductDataOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SQLProductDataOperation.h; sourceTree = "<group>"; };
+		D7CF9F6B22D4923300B24AEE /* SQLProductDataOperation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SQLProductDataOperation.m; sourceTree = "<group>"; };
 		DB0D187D679B07B7938C48A8 /* Pods-M8Mirror.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-M8Mirror.release.xcconfig"; path = "Pods/Target Support Files/Pods-M8Mirror/Pods-M8Mirror.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -689,6 +706,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7CF9F5922D4421100B24AEE /* QuartzCore.framework in Frameworks */,
 				7D25AFD820B1524100F96834 /* AssetsLibrary.framework in Frameworks */,
 				7D25AFD620B1523500F96834 /* AudioToolbox.framework in Frameworks */,
 				7D1D315F20981BCE00B3E98A /* libsqlite3.0.tbd in Frameworks */,
@@ -1102,6 +1120,8 @@
 				7D25AFCA20B141BF00F96834 /* UILabel+LeftTopAlign.m */,
 				7D3BBEFE20EB63AD0040E37F /* NSArray+NSString.h */,
 				7D3BBEFF20EB63AD0040E37F /* NSArray+NSString.m */,
+				D7CF9F6722D4795E00B24AEE /* NSDate+YylCategory.h */,
+				D7CF9F6622D4795E00B24AEE /* NSDate+YylCategory.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1500,6 +1520,7 @@
 		7DB19C99205FF9B4009B8455 /* M8ProductCtrl */ = {
 			isa = PBXGroup;
 			children = (
+				D7CF9F3822CF047600B24AEE /* Edit */,
 				7DD0DFA520712D6600A0EA9E /* Model */,
 				7DD0DF912070DA1100A0EA9E /* Views */,
 				7DB19C9A205FF9B4009B8455 /* Controllers */,
@@ -1510,12 +1531,8 @@
 		7DB19C9A205FF9B4009B8455 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				7DB19C9B205FF9F4009B8455 /* M8ProductViewController.h */,
-				7DB19C9C205FF9F4009B8455 /* M8ProductViewController.m */,
 				D7CF9F2B22CEEDAE00B24AEE /* M8MProductViewController.h */,
 				D7CF9F2C22CEEDAE00B24AEE /* M8MProductViewController.m */,
-				7DC8F1DD207CD0B900C1CB53 /* M8ProductEditViewController.h */,
-				7DC8F1DE207CD0B900C1CB53 /* M8ProductEditViewController.m */,
 				7DC8F1E0207E4B5C00C1CB53 /* M8ProductDetailViewController.h */,
 				7DC8F1E1207E4B5C00C1CB53 /* M8ProductDetailViewController.m */,
 				7D1D30F9208F840300B3E98A /* TypeViewController.h */,
@@ -1561,6 +1578,9 @@
 		7DC8F211208DED0100C1CB53 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				D7CF9F6922D4905000B24AEE /* SQLData */,
+				D7CF9F6222D4735E00B24AEE /* Path */,
+				D7CF9F5A22D4426200B24AEE /* Toast */,
 				7DC8F212208DED2E00C1CB53 /* LYUserDefault.h */,
 				7DC8F213208DED2E00C1CB53 /* LYUserDefault.m */,
 				7D1D31462094D07200B3E98A /* LYHTTPSManager.h */,
@@ -1743,12 +1763,77 @@
 		BAD03943C9C7FBE17E13FD20 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D7CF9F5822D4421100B24AEE /* QuartzCore.framework */,
 				7D25AFD720B1524100F96834 /* AssetsLibrary.framework */,
 				7D25AFD520B1523400F96834 /* AudioToolbox.framework */,
 				7D1D315E20981BCE00B3E98A /* libsqlite3.0.tbd */,
 				5BE4E4BBF5698B7DA49CC15D /* libPods-M8Mirror.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D7CF9F3822CF047600B24AEE /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				D7CF9F3922CF047600B24AEE /* Ctrls */,
+				D7CF9F3C22CF047600B24AEE /* models */,
+				D7CF9F3F22CF047600B24AEE /* Views */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
+		D7CF9F3922CF047600B24AEE /* Ctrls */ = {
+			isa = PBXGroup;
+			children = (
+				D7CF9F3A22CF047600B24AEE /* M8MProductEditViewController.h */,
+				D7CF9F3B22CF047600B24AEE /* M8MProductEditViewController.m */,
+			);
+			path = Ctrls;
+			sourceTree = "<group>";
+		};
+		D7CF9F3C22CF047600B24AEE /* models */ = {
+			isa = PBXGroup;
+			children = (
+				D7CF9F3E22CF047600B24AEE /* ProductInfoModel.h */,
+				D7CF9F3D22CF047600B24AEE /* ProductInfoModel.m */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		D7CF9F3F22CF047600B24AEE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D7CF9F4522CF050500B24AEE /* ProductEditInfoCell.h */,
+				D7CF9F4622CF050500B24AEE /* ProductEditInfoCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D7CF9F5A22D4426200B24AEE /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				D7CF9F5B22D4428900B24AEE /* YylToast.h */,
+				D7CF9F5C22D4428900B24AEE /* YylToast.m */,
+			);
+			path = Toast;
+			sourceTree = "<group>";
+		};
+		D7CF9F6222D4735E00B24AEE /* Path */ = {
+			isa = PBXGroup;
+			children = (
+				D7CF9F6322D4738800B24AEE /* YylPathManager.h */,
+				D7CF9F6422D4738800B24AEE /* YylPathManager.m */,
+			);
+			path = Path;
+			sourceTree = "<group>";
+		};
+		D7CF9F6922D4905000B24AEE /* SQLData */ = {
+			isa = PBXGroup;
+			children = (
+				D7CF9F6A22D4923300B24AEE /* SQLProductDataOperation.h */,
+				D7CF9F6B22D4923300B24AEE /* SQLProductDataOperation.m */,
+			);
+			path = SQLData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2029,6 +2114,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7CF9F6C22D4923300B24AEE /* SQLProductDataOperation.m in Sources */,
 				7D1D30FB208F840300B3E98A /* TypeViewController.m in Sources */,
 				7DC8F1E2207E4B5C00C1CB53 /* M8ProductDetailViewController.m in Sources */,
 				7D1D3151209732D900B3E98A /* ImagesSelectedViewController.m in Sources */,
@@ -2060,6 +2146,7 @@
 				7D25B04B20E4A38700F96834 /* YKLineDataObject.m in Sources */,
 				7DB19C652053BA5B009B8455 /* PinyinHelper.m in Sources */,
 				D762058A22C1D7800044CD49 /* M8MClientDetailViewController.m in Sources */,
+				D7CF9F4322CF047600B24AEE /* ProductInfoModel.m in Sources */,
 				7DA08A4A205305DD00D9CB5C /* DotCountLabel.m in Sources */,
 				7DD0DF872070CEEC00A0EA9E /* YBPopupMenuPath.m in Sources */,
 				7D3BBF0020EB63AD0040E37F /* NSArray+NSString.m in Sources */,
@@ -2071,12 +2158,12 @@
 				7DA08A1620503B7800D9CB5C /* M8HistoryView.m in Sources */,
 				7D25B01A20C7F6F800F96834 /* CGXPickerUIBaseView.m in Sources */,
 				7DC8F1D7207BC56500C1CB53 /* EditCellView.m in Sources */,
-				7DB19C9D205FF9F4009B8455 /* M8ProductViewController.m in Sources */,
 				7D1D31322093823400B3E98A /* NSObject+MJKeyValue.m in Sources */,
 				7DA08A49205305DD00D9CB5C /* YJSliderView.m in Sources */,
 				7D25B01D20C7F6F800F96834 /* CGXPickerView.m in Sources */,
 				7DA08A39205193C400D9CB5C /* M8SolveViewController.m in Sources */,
 				D762059122C1D8550044CD49 /* ClientDetailCell.m in Sources */,
+				D7CF9F4222CF047600B24AEE /* M8MProductEditViewController.m in Sources */,
 				7D25B01620C7F6F800F96834 /* NSDate+CGXPicker.m in Sources */,
 				7D3BBEF620E895ED0040E37F /* LanguageViewCell.m in Sources */,
 				7D25AFF120BC5D3400F96834 /* MOCompareViewController.m in Sources */,
@@ -2101,10 +2188,12 @@
 				7DC8F2102084C91E00C1CB53 /* SelectPhotoManager.m in Sources */,
 				7DA08A07204ED29100D9CB5C /* M8MainViewController.m in Sources */,
 				7D25AFE820B472F000F96834 /* PhotoView.m in Sources */,
+				D7CF9F5D22D4428900B24AEE /* YylToast.m in Sources */,
 				7DC8F1FA2081102D00C1CB53 /* settingViewCell.m in Sources */,
 				7DD095FE20611ED5003D11A0 /* CustomerViewCell.m in Sources */,
 				7D25B00220C392DA00F96834 /* CompareTimesViewCell.m in Sources */,
 				7DC8F2062081BA4C00C1CB53 /* AdminViewCell.m in Sources */,
+				D7CF9F4722CF050500B24AEE /* ProductEditInfoCell.m in Sources */,
 				D762058522C1D6590044CD49 /* M8MloginViewController.m in Sources */,
 				7DA08A432051986D00D9CB5C /* M8TopView.m in Sources */,
 				7D1D31332093823400B3E98A /* MJProperty.m in Sources */,
@@ -2145,7 +2234,7 @@
 				7DD095FB2060C76B003D11A0 /* MainTabbarView.m in Sources */,
 				7DD0961E206A573C003D11A0 /* NSString+Wrapper.m in Sources */,
 				7DD0DF97207123BD00A0EA9E /* ProductViewCell.m in Sources */,
-				7DC8F1DF207CD0B900C1CB53 /* M8ProductEditViewController.m in Sources */,
+				D7CF9F6522D4738800B24AEE /* YylPathManager.m in Sources */,
 				7DC8F221208E361500C1CB53 /* ProductNetCell.m in Sources */,
 				7DC8F217208E246200C1CB53 /* ProductNetworkViewController.m in Sources */,
 				7D25AFFF20C38DD200F96834 /* CustomTestCell.m in Sources */,
@@ -2174,6 +2263,7 @@
 				7DB19C662053BA5B009B8455 /* ChineseInclude.m in Sources */,
 				7D1D31372093823400B3E98A /* NSObject+MJClass.m in Sources */,
 				7DB19C6B2053BA5B009B8455 /* PinYinForObjc.m in Sources */,
+				D7CF9F6822D4795E00B24AEE /* NSDate+YylCategory.m in Sources */,
 				7D1D313A2093823400B3E98A /* MJDictionaryCache.m in Sources */,
 				7DA08A0D204EEFB300D9CB5C /* YHLoopScrollView.m in Sources */,
 			);
@@ -2337,7 +2427,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EL4EGHDQTJ;
+				DEVELOPMENT_TEAM = M3FK4FYNRT;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/M8Mirror/PrefixHeader.pch";
 				INFOPLIST_FILE = M8Mirror/Info.plist;
@@ -2347,12 +2437,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/M8Mirror/Others/Lib/MLCameraLib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lyy.M8Mirror;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cignacmb.ent.hmsapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/** $(PODS_ROOT)/**";
 			};
 			name = Debug;
 		};
@@ -2364,7 +2454,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EL4EGHDQTJ;
+				DEVELOPMENT_TEAM = M3FK4FYNRT;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/M8Mirror/PrefixHeader.pch";
 				INFOPLIST_FILE = M8Mirror/Info.plist;
@@ -2374,12 +2464,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/M8Mirror/Others/Lib/MLCameraLib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lyy.M8Mirror;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cignacmb.ent.hmsapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/**";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/** $(PODS_ROOT)/**";
 			};
 			name = Release;
 		};

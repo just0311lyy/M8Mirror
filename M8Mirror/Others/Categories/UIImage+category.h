@@ -38,4 +38,30 @@
  * @return 图片
  */
 +(UIImage *)imageWithBase64String:(NSString *)string;
+
+/**
+ * 将图片压缩为二进制数据流
+ * @param sourceImage 图片
+ * @param maxSize 指定最大尺寸
+ * @return 图片二进制数据流
+ */
+- (NSData *)resetSizeOfImageData:(UIImage *)sourceImage maxSize:(NSInteger)maxSize;
+
+/**
+ * 将图片压缩为二进制数据流
+ * @param size 压缩到指定尺寸
+ * @param sourceImage 原图片
+ * @return 压缩后的图片
+ */
+- (UIImage *)newSizeImage:(CGSize)size image:(UIImage *)sourceImage;
+
+/**
+ * 将图片压缩为二进制数据流
+ * @param arr
+ * @param image 图片
+ * @param finallImageData
+ * @param maxSize 指定最大尺寸
+ * @return 图片二进制数据流
+ */
+- (NSData *)halfFuntion:(NSArray *)arr image:(UIImage *)image sourceData:(NSData *)finallImageData maxSize:(NSInteger)maxSize;
 @end

@@ -103,7 +103,7 @@
     _accountText = [[UITextField alloc] init];
     [_accountText setDelegate:self];
     [_accountText setPlaceholder:[LYLocalizeConfig localizedString:@"Account"]];
-    [_accountText setValue:[UIFont boldSystemFontOfSize:GetLogicFont(8)] forKeyPath:@"_placeholderLabel.font"];
+//    [_accountText setValue:[UIFont boldSystemFontOfSize:GetLogicFont(8)] forKeyPath:@"_placeholderLabel.font"];
     [_accountText setFont:[UIFont boldSystemFontOfSize:GetLogicFont(14)]];
     _accountText.clearButtonMode = UITextFieldViewModeWhileEditing; //一键删除
     _accountText.autocapitalizationType = UITextAutocapitalizationTypeNone; //不自动大写
@@ -144,7 +144,7 @@
     [_passwordText setDelegate:self];
     [_passwordText setPlaceholder:[LYLocalizeConfig localizedString:@"Password"]];
     _passwordText.secureTextEntry = YES;
-    [_passwordText setValue:[UIFont boldSystemFontOfSize:GetLogicFont(8)] forKeyPath:@"_placeholderLabel.font"];
+//    [_passwordText setValue:[UIFont boldSystemFontOfSize:GetLogicFont(8)] forKeyPath:@"_placeholderLabel.font"];
     [_passwordText setFont:[UIFont boldSystemFontOfSize:GetLogicFont(14)]];
     _passwordText.clearButtonMode = UITextFieldViewModeWhileEditing; //一键删除
     _passwordText.autocapitalizationType = UITextAutocapitalizationTypeNone; //不自动大写

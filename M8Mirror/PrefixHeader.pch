@@ -17,6 +17,8 @@
 #import "LYUserDefault.h"
 #import "LYHTTPSManager.h"
 #import "LYSQLDataOperation.h"
+#import "YylToast.h"
+
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 //屏幕宽和高
@@ -135,7 +137,7 @@ alpha:1.0]
 #define VIEWSAFEAREAINSETS(view) ({UIEdgeInsets i; if(@available(iOS 11.0, *)) {i = view.safeAreaInsets;} else {i = UIEdgeInsetsZero;} i;})
 
 //导航栏实际高度
-#define  NavBarOrginY   ((Device_Is_iPhoneX )? GetLogicPixelX(88):GetLogicPixelX(40))
+#define  NavBarOrginY ((Device_Is_iPhoneX )? GetLogicPixelX(88):GetLogicPixelX(40))
 
 #define  __SYSTEM_PRD  //注释为发布环境
 #ifndef __SYSTEM_PRD

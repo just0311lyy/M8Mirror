@@ -147,6 +147,7 @@
 +(CGFloat)getCellHeight{
     return (6 * GetLogicPixelX(10) + GetLogicPixelX(220) + 6 * GetLogicPixelX(10));
 }
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

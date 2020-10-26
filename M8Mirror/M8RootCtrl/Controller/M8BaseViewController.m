@@ -21,7 +21,9 @@
     [self initView];
 }
 
+#pragma mark -- ***  init ***
 -(void)initNavBar{
+
     self.navigationController.navigationBar.barTintColor = LOGO_COLOR;
     self.navigationController.navigationBar.titleTextAttributes=
     @{NSForegroundColorAttributeName:[UIColor whiteColor],
@@ -29,15 +31,16 @@
     //导航栏左边返回按钮
     _leftNavBarBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     //    [leftBarBtn setTitle:@"取消" forState:UIControlStateNormal];
-    [_leftNavBarBtn setImage:[UIImage scaleImage:[UIImage imageNamed:@"nav_back.png"] toSize:CGSizeMake(GetLogicPixelX(36)/2, GetLogicPixelX(66)/2)]  forState:UIControlStateNormal];
+    //36x66
+    [_leftNavBarBtn setImage:[UIImage scaleImage:[UIImage imageNamed:@"nav_back.png"] toSize:CGSizeMake(GetLogicPixelX(20)*36/66, GetLogicPixelX(20))]  forState:UIControlStateNormal];
     [_leftNavBarBtn addTarget:self action:@selector(leftNavBarButtonClick) forControlEvents:UIControlEventTouchUpInside];
-    _leftNavBarBtn.frame = CGRectMake(0, 0,GetLogicPixelX(50),GetLogicPixelX(66)/2);
+    _leftNavBarBtn.frame = CGRectMake(0, 0,GetLogicPixelX(20),GetLogicPixelX(20));
     UIBarButtonItem *leftBarItem = [[UIBarButtonItem alloc] initWithCustomView:_leftNavBarBtn];
     self.navigationItem.leftBarButtonItem = leftBarItem;
     //导航栏右边编辑按钮 图片按钮frame：36x36
     _rightNavBarBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_rightNavBarBtn setTitle:@"编辑" forState:UIControlStateNormal];
-    [_rightNavBarBtn.titleLabel setFont:[UIFont systemFontOfSize:GetLogicFont(15)]];
+    [_rightNavBarBtn.titleLabel setFont:[UIFont systemFontOfSize:GetLogicFont(10)]];
     [_rightNavBarBtn setBackgroundImage:nil forState:UIControlStateNormal];
     [_rightNavBarBtn addTarget:self action:@selector(rightNavBarButtonClick) forControlEvents:UIControlEventTouchUpInside];
     _rightNavBarBtn.frame = CGRectMake(0, 0,GetLogicPixelX(36),GetLogicPixelX(36));
@@ -61,7 +64,7 @@
     
 }
 
-#pragma mark - buttonAction
+#pragma mark -- ***  buttonAction ***
 //返回按钮
 -(void)leftNavBarButtonClick{
     NSLog(@"点击了左导航按钮");
@@ -70,6 +73,19 @@
 //编辑按钮
 - (void)rightNavBarButtonClick {
     NSLog(@"点击了右导航按钮");
+}
+
+#pragma mark -- *** 弹出提示框 ***
+-(void)showAlertViewWithText:(NSString *)txt{
+    UIAlertController *alertView =
+    [UIAlertController alertControllerWithTitle:@"提示"
+                                        message:txt
+                                 preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定"
+                                                     style:UIAlertActionStyleDefault
+                                                   handler:nil];
+    [alertView addAction:action];
+    [self presentViewController:alertView animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

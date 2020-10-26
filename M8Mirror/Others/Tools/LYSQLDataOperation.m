@@ -41,6 +41,7 @@ static LYSQLDataOperation *sharedDataInstance = nil;
     [self createTable];
     return YES;
 }
+
 /** 创建所有的数据库表 */
 -(void)createTable{
     if (![_dataBase open]) {
@@ -58,6 +59,7 @@ static LYSQLDataOperation *sharedDataInstance = nil;
     [advertImgsSqlStr appendString:@"imageParlorID int DEFAULT 0,"];
     [advertImgsSqlStr appendString:@"imageUsername TEXT(100))"];
     [_dataBase executeUpdate:advertImgsSqlStr];
+    
     //主页轮播图数据存储
     NSMutableString *showImgsSqlStr = [[NSMutableString alloc] initWithString:@"CREATE TABLE if not exists showImages_info_table("];
     [showImgsSqlStr appendString:@"showImgSortNumber INTEGER PRIMARY KEY AUTOINCREMENT,"];
@@ -69,7 +71,9 @@ static LYSQLDataOperation *sharedDataInstance = nil;
     [showImgsSqlStr appendString:@"imageParlorID int DEFAULT 0,"];
     [showImgsSqlStr appendString:@"imageUsername TEXT(100))"];
     [_dataBase executeUpdate:showImgsSqlStr];
+    
     //产品列表数据存储
+    /*
     NSMutableString *productsSqlStr = [[NSMutableString alloc] initWithString:@"CREATE TABLE if not exists products_info_table("];
     [productsSqlStr appendString:@"productSortNumber INTEGER PRIMARY KEY AUTOINCREMENT,"];
     [productsSqlStr appendString:@"productID int DEFAULT 0,"];
@@ -85,6 +89,8 @@ static LYSQLDataOperation *sharedDataInstance = nil;
     [productsSqlStr appendString:@"productParlorID int DEFAULT 0,"];
     [productsSqlStr appendString:@"productUserid TEXT(100))"];
     [_dataBase executeUpdate:productsSqlStr];
+    */
+    
     //客户列表数据存储
     NSMutableString *customersSqlStr = [[NSMutableString alloc] initWithString:@"CREATE TABLE if not exists customers_info_table("];
     [customersSqlStr appendString:@"customerSortNumber INTEGER PRIMARY KEY AUTOINCREMENT,"];
@@ -275,6 +281,7 @@ static LYSQLDataOperation *sharedDataInstance = nil;
     return [_dataBase executeUpdate:sqlString];
 }
 
+/*
 #pragma mark - 产品列表相关
 -(BOOL)saveProductData:(ProductModel *)productModel{
     if (![_dataBase open]) {
@@ -355,6 +362,7 @@ static LYSQLDataOperation *sharedDataInstance = nil;
     NSString *sqlString = [NSString stringWithFormat:@"DELETE FROM products_info_table"];
     return [_dataBase executeUpdate:sqlString];
 }
+*/
 
 #pragma mark - 客户列表相关
 -(BOOL)saveCustomerData:(customerModel *)model{
